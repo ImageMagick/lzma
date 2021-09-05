@@ -648,9 +648,9 @@ dnl _REQUIRE_VERSION and _VERSION are present, the _VERSION is ignored.
 dnl We use both for compatibility with other programs in the Autotools family.
 echo
 echo "Initializing gettext:"
+AM_GNU_GETTEXT([external])
 AM_GNU_GETTEXT_REQUIRE_VERSION([0.19.6])
 AM_GNU_GETTEXT_VERSION([0.19.6])
-AM_GNU_GETTEXT([external])
 
 
 ###############################################################################
