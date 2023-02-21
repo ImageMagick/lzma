@@ -1,13 +1,13 @@
 # Brazilian Portuguese translations for xz package
 # Traduções em português brasileiro para o pacote xz.
 # This file is put in the public domain.
-# Rafael Fontenelle <rafaelff@gnome.org>, 2019.
+# Rafael Fontenelle <rafaelff@gnome.org>, 2019-2021.
 msgid ""
 msgstr ""
 "Project-Id-Version: xz 5.2.4\n"
 "Report-Msgid-Bugs-To: lasse.collin@tukaani.org\n"
-"POT-Creation-Date: 2020-03-17 16:29+0200\n"
-"PO-Revision-Date: 2019-03-05 20:30-0200\n"
+"POT-Creation-Date: 2022-06-29 17:47+0300\n"
+"PO-Revision-Date: 2021-01-06 22:30-0300\n"
 "Last-Translator: Rafael Fontenelle <rafaelff@gnome.org>\n"
 "Language-Team: Brazilian Portuguese <ldpbr-translation@lists.sourceforge.net>\n"
 "Language: pt_BR\n"
@@ -197,7 +197,7 @@ msgstr "%s: O arquivo possui o bit sticky definido, ignorando"
 #: src/xz/file_io.c:702
 #, c-format
 msgid "%s: Input file has more than one hard link, skipping"
-msgstr "%s: O arquivo de entrada possui mais de um link absoluto, ignorando"
+msgstr "%s: O arquivo de entrada possui mais de um link físico, ignorando"
 
 #: src/xz/file_io.c:792
 #, c-format

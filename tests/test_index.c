@@ -211,6 +211,7 @@ test_read(lzma_index *i)
 static void
 test_code(lzma_index *i)
 {
+#if defined(HAVE_ENCODERS) && defined(HAVE_DECODERS)
 	const size_t alloc_size = 128 * 1024;
 	uint8_t *buf = malloc(alloc_size);
 	expect(buf != NULL);
@@ -275,6 +276,9 @@ test_code(lzma_index *i)
 	lzma_index_end(d, NULL);
 
 	free(buf);
+#else
+	(void)i;
+#endif
 }
 
 
@@ -290,7 +294,7 @@ test_many(lzma_index *i)
 static void
 test_cat(void)
 {
-	lzma_index *a, *b, *c;
+	lzma_index *a, *b, *c, *d, *e, *f;
 	lzma_index_iter r;
 
 	// Empty Indexes
@@ -411,6 +415,47 @@ test_cat(void)
 				^ (i == 0));
 
 	lzma_index_end(a, NULL);
+
+	// Test for the bug fix 3d5a99ca373a4e86faf671226ca6487febb9eeac.
+	// lzma_index_checks would previously only return the checks
+	// for the last stream that was concatenated to the index.
+	d = create_small();
+	e = create_small();
+	f = create_small();
+
+	lzma_stream_flags crc32_flags = {
+		.backward_size = LZMA_BACKWARD_SIZE_MIN,
+		.check = LZMA_CHECK_CRC32
+	};
+	expect(lzma_index_stream_flags(d, &crc32_flags) == LZMA_OK);
+
+	lzma_stream_flags crc64_flags = {
+		.backward_size = LZMA_BACKWARD_SIZE_MIN,
+		.check = LZMA_CHECK_CRC64
+	};
+	expect(lzma_index_stream_flags(e, &crc64_flags) == LZMA_OK);
+
+	lzma_stream_flags sha256_flags = {
+		.backward_size = LZMA_BACKWARD_SIZE_MIN,
+		.check = LZMA_CHECK_SHA256
+	};
+	expect(lzma_index_stream_flags(f, &sha256_flags) == LZMA_OK);
+
+	expect(lzma_index_checks(d) == (1U << LZMA_CHECK_CRC32));
+	expect(lzma_index_checks(e) == (1U << LZMA_CHECK_CRC64));
+	expect(lzma_index_checks(f) == (1U << LZMA_CHECK_SHA256));
+
+	expect(lzma_index_cat(d, e, NULL) == LZMA_OK);
+	expect(lzma_index_checks(d) == ((1U << LZMA_CHECK_CRC32) |
+			(1U << LZMA_CHECK_CRC64)));
+
+	expect(lzma_index_cat(d, f, NULL) == LZMA_OK);
+	expect(lzma_index_checks(d) == ((1U << LZMA_CHECK_CRC32) |
+			(1U << LZMA_CHECK_CRC64) |
+			(1U << LZMA_CHECK_SHA256)));
+
+	lzma_index_end(d, NULL);
+
 }
 
 
@@ -592,6 +637,7 @@ test_locate(void)
 static void
 test_corrupt(void)
 {
+#if defined(HAVE_ENCODERS) && defined(HAVE_DECODERS)
 	const size_t alloc_size = 128 * 1024;
 	uint8_t *buf = malloc(alloc_size);
 	expect(buf != NULL);
@@ -627,6 +673,7 @@ test_corrupt(void)
 
 	lzma_end(&strm);
 	free(buf);
+#endif
 }
 
 

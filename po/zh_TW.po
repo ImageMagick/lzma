@@ -6,15 +6,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xz 5.2.4\n"
 "Report-Msgid-Bugs-To: lasse.collin@tukaani.org\n"
-"POT-Creation-Date: 2020-03-17 16:29+0200\n"
+"POT-Creation-Date: 2018-04-29 18:19+0300\n"
 "PO-Revision-Date: 2019-04-23 22:00+0800\n"
 "Last-Translator: pan93412 <pan93412@gmail.com>\n"
 "Language-Team: Chinese (traditional) <zh-l10n@linux.org.tw>\n"
 "Language: zh_TW\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Bugs: Report translation errors to the Language-Team address.\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Generator: Poedit 2.2.1\n"
 "X-Poedit-SourceCharset: UTF-8\n"
@@ -121,11 +121,19 @@ msgstr "已將 LZMA%c 的字典大小從 %s MiB 調整至 %s MiB，以不超過�
 msgid "Error creating a pipe: %s"
 msgstr "建立管線時發生錯誤：%s"
 
-#: src/xz/file_io.c:224
+#: src/xz/file_io.c:173
+msgid "Sandbox is disabled due to incompatible command line arguments"
+msgstr "由於指定不相容的指令列參數，已停用沙盒"
+
+#: src/xz/file_io.c:216
+msgid "Sandbox was successfully enabled"
+msgstr "已成功啟用沙盒"
+
+#: src/xz/file_io.c:220
 msgid "Failed to enable the sandbox"
 msgstr "無法啟用沙盒"
 
-#: src/xz/file_io.c:266
+#: src/xz/file_io.c:262
 #, c-format
 msgid "%s: poll() failed: %s"
 msgstr "%s：poll() 失敗：%s"
@@ -140,126 +148,126 @@ msgstr "%s：poll() 失敗：%s"
 #. it is possible that the user has put a new file in place
 #. of the original file, and in that case it obviously
 #. shouldn't be removed.
-#: src/xz/file_io.c:333
+#: src/xz/file_io.c:332
 #, c-format
 msgid "%s: File seems to have been moved, not removing"
 msgstr "%s：檔案似乎已經遷移，不移除"
 
-#: src/xz/file_io.c:340 src/xz/file_io.c:882
+#: src/xz/file_io.c:339 src/xz/file_io.c:878
 #, c-format
 msgid "%s: Cannot remove: %s"
 msgstr "%s：無法移除：%s"
 
-#: src/xz/file_io.c:366
+#: src/xz/file_io.c:364
 #, c-format
 msgid "%s: Cannot set the file owner: %s"
 msgstr "%s：無法設定檔案所有者：%s"
 
-#: src/xz/file_io.c:372
+#: src/xz/file_io.c:370
 #, c-format
 msgid "%s: Cannot set the file group: %s"
 msgstr "%s：無法設定檔案群組：%s"
 
-#: src/xz/file_io.c:391
+#: src/xz/file_io.c:389
 #, c-format
 msgid "%s: Cannot set the file permissions: %s"
 msgstr "%s：無法設定檔案權限：%s"
 
-#: src/xz/file_io.c:517
+#: src/xz/file_io.c:515
 #, c-format
 msgid "Error getting the file status flags from standard input: %s"
 msgstr "從標準輸入取得檔案狀態旗標時發生錯誤：%s"
 
-#: src/xz/file_io.c:574 src/xz/file_io.c:636
+#: src/xz/file_io.c:572 src/xz/file_io.c:634
 #, c-format
 msgid "%s: Is a symbolic link, skipping"
 msgstr "%s：是個符號連結，跳過"
 
-#: src/xz/file_io.c:665
+#: src/xz/file_io.c:663
 #, c-format
 msgid "%s: Is a directory, skipping"
 msgstr "%s：是個目錄，跳過"
 
-#: src/xz/file_io.c:671
+#: src/xz/file_io.c:669
 #, c-format
 msgid "%s: Not a regular file, skipping"
 msgstr "%s：不是一般檔案，跳過"
 
-#: src/xz/file_io.c:688
+#: src/xz/file_io.c:686
 #, c-format
 msgid "%s: File has setuid or setgid bit set, skipping"
 msgstr "%s：檔案已設定 setuid 或 setgid 位元，跳過"
 
-#: src/xz/file_io.c:695
+#: src/xz/file_io.c:693
 #, c-format
 msgid "%s: File has sticky bit set, skipping"
 msgstr "%s：檔案已設定黏性位元（sticky bit），跳過"
 
-#: src/xz/file_io.c:702
+#: src/xz/file_io.c:700
 #, c-format
 msgid "%s: Input file has more than one hard link, skipping"
 msgstr "%s：輸入檔有超過一個實際連結 (hard link)，跳過"
 
-#: src/xz/file_io.c:792
+#: src/xz/file_io.c:788
 #, c-format
 msgid "Error restoring the status flags to standard input: %s"
 msgstr "將狀態旗標還原到標準輸入時發生錯誤：%s"
 
-#: src/xz/file_io.c:840
+#: src/xz/file_io.c:836
 #, c-format
 msgid "Error getting the file status flags from standard output: %s"
 msgstr "從標準輸出取得檔案狀態旗標時發生錯誤：%s"
 
-#: src/xz/file_io.c:1018
+#: src/xz/file_io.c:1014
 #, c-format
 msgid "Error restoring the O_APPEND flag to standard output: %s"
 msgstr "將 O_APPEND 旗標還原到標準輸出時發生錯誤：%s"
 
-#: src/xz/file_io.c:1030
+#: src/xz/file_io.c:1026
 #, c-format
 msgid "%s: Closing the file failed: %s"
 msgstr "%s：關閉檔案失敗：%s"
 
-#: src/xz/file_io.c:1066 src/xz/file_io.c:1309
+#: src/xz/file_io.c:1062 src/xz/file_io.c:1288
 #, c-format
 msgid "%s: Seeking failed when trying to create a sparse file: %s"
 msgstr "%s：嘗試建立疏鬆檔案時發生搜尋失敗：%s"
 
-#: src/xz/file_io.c:1167
+#: src/xz/file_io.c:1157
 #, c-format
 msgid "%s: Read error: %s"
 msgstr "%s：讀取時發生錯誤：%s"
 
-#: src/xz/file_io.c:1191
+#: src/xz/file_io.c:1177
 #, c-format
 msgid "%s: Error seeking the file: %s"
 msgstr "%s：搜尋檔案時發生錯誤：%s"
 
-#: src/xz/file_io.c:1201
+#: src/xz/file_io.c:1187
 #, c-format
 msgid "%s: Unexpected end of file"
 msgstr "%s：非期望的檔案結尾"
 
-#: src/xz/file_io.c:1260
+#: src/xz/file_io.c:1246
 #, c-format
 msgid "%s: Write error: %s"
 msgstr "%s：寫入時發生錯誤：%s"
 
-#: src/xz/hardware.c:137
+#: src/xz/hardware.c:107
 msgid "Disabled"
 msgstr "已停用"
 
 #. TRANSLATORS: Test with "xz --info-memory" to see if
 #. the alignment looks nice.
-#: src/xz/hardware.c:156
+#: src/xz/hardware.c:126
 msgid "Total amount of physical memory (RAM): "
 msgstr "實體記憶體 (RAM) 總量："
 
-#: src/xz/hardware.c:158
+#: src/xz/hardware.c:128
 msgid "Memory usage limit for compression:    "
 msgstr "壓縮記憶體限制：       "
 
-#: src/xz/hardware.c:160
+#: src/xz/hardware.c:130
 msgid "Memory usage limit for decompression:  "
 msgstr "解壓縮記憶體限制：     "
 
@@ -488,68 +496,68 @@ msgstr "從標準輸入讀取檔名時，無法從標準輸入讀取資料"
 #. of the line in messages. Usually it becomes "xz: ".
 #. This is a translatable string because French needs
 #. a space before a colon.
-#: src/xz/message.c:728
+#: src/xz/message.c:714
 #, c-format
 msgid "%s: "
 msgstr "%s："
 
-#: src/xz/message.c:791 src/xz/message.c:841
+#: src/xz/message.c:777 src/xz/message.c:827
 msgid "Internal error (bug)"
 msgstr "內部錯誤（臭蟲）"
 
-#: src/xz/message.c:798
+#: src/xz/message.c:784
 msgid "Cannot establish signal handlers"
 msgstr "無法確立信號處理器"
 
-#: src/xz/message.c:807
+#: src/xz/message.c:793
 msgid "No integrity check; not verifying file integrity"
 msgstr "沒有完整性檢查；不驗證檔案完整性"
 
-#: src/xz/message.c:810
+#: src/xz/message.c:796
 msgid "Unsupported type of integrity check; not verifying file integrity"
 msgstr "未知完整性檢查類型；不驗證檔案完整性"
 
-#: src/xz/message.c:817
+#: src/xz/message.c:803
 msgid "Memory usage limit reached"
 msgstr "達到記憶體用量上限"
 
-#: src/xz/message.c:820
+#: src/xz/message.c:806
 msgid "File format not recognized"
 msgstr "無法識別檔案格式"
 
-#: src/xz/message.c:823
+#: src/xz/message.c:809
 msgid "Unsupported options"
 msgstr "不支援的選項"
 
-#: src/xz/message.c:826
+#: src/xz/message.c:812
 msgid "Compressed data is corrupt"
 msgstr "壓縮資料是損壞的"
 
-#: src/xz/message.c:829
+#: src/xz/message.c:815
 msgid "Unexpected end of input"
 msgstr "遇到非預期輸入結尾"
 
-#: src/xz/message.c:862
+#: src/xz/message.c:848
 #, c-format
 msgid "%s MiB of memory is required. The limiter is disabled."
 msgstr "需要 %s MiB 的記憶體。已停用記憶體限制器。"
 
-#: src/xz/message.c:890
+#: src/xz/message.c:876
 #, c-format
 msgid "%s MiB of memory is required. The limit is %s."
 msgstr "需要 %s MiB 的記憶體。記憶體限制為 %s。"
 
-#: src/xz/message.c:1057
+#: src/xz/message.c:1043
 #, c-format
 msgid "%s: Filter chain: %s\n"
 msgstr "%s：篩選鏈：%s\n"
 
-#: src/xz/message.c:1067
+#: src/xz/message.c:1053
 #, c-format
 msgid "Try `%s --help' for more information."
 msgstr "嘗試「%s --help」取得更多資訊。"
 
-#: src/xz/message.c:1093
+#: src/xz/message.c:1079
 #, c-format
 msgid ""
 "Usage: %s [OPTION]... [FILE]...\n"
@@ -560,15 +568,15 @@ msgstr ""
 "用 .xz 格式壓縮，或解壓縮 .xz 格式中的 <檔案>。\n"
 "\n"
 
-#: src/xz/message.c:1100
+#: src/xz/message.c:1086
 msgid "Mandatory arguments to long options are mandatory for short options too.\n"
 msgstr "長選項的必填參數，對短選項也是必填。\n"
 
-#: src/xz/message.c:1104
+#: src/xz/message.c:1090
 msgid " Operation mode:\n"
 msgstr " 操作模式：\n"
 
-#: src/xz/message.c:1107
+#: src/xz/message.c:1093
 msgid ""
 "  -z, --compress      force compression\n"
 "  -d, --decompress    force decompression\n"
@@ -580,7 +588,7 @@ msgstr ""
 "  -t, --test          測試壓縮檔完整性\n"
 "  -l, --list          列出 .xz 檔的資訊"
 
-#: src/xz/message.c:1113
+#: src/xz/message.c:1099
 msgid ""
 "\n"
 " Operation modifiers:\n"
@@ -588,7 +596,7 @@ msgstr ""
 "\n"
 " 操作修飾詞：\n"
 
-#: src/xz/message.c:1116
+#: src/xz/message.c:1102
 msgid ""
 "  -k, --keep          keep (don't delete) input files\n"
 "  -f, --force         force overwrite of output file and (de)compress links\n"
@@ -598,7 +606,7 @@ msgstr ""
 "  -f, --force         強制覆寫輸出檔並（解）壓縮連結\n"
 "  -c, --stdout        寫入標準輸出並不刪除輸入檔"
 
-#: src/xz/message.c:1122
+#: src/xz/message.c:1108
 msgid ""
 "      --single-stream decompress only the first stream, and silently\n"
 "                      ignore possible remaining input data"
@@ -606,7 +614,7 @@ msgstr ""
 "      --single-stream 僅解壓縮第一個串流，再\n"
 "                      安靜地忽略可能剩餘的輸入檔"
 
-#: src/xz/message.c:1125
+#: src/xz/message.c:1111
 msgid ""
 "      --no-sparse     do not create sparse files when decompressing\n"
 "  -S, --suffix=.SUF   use the suffix `.SUF' on compressed files\n"
@@ -621,7 +629,7 @@ msgstr ""
 "                      則從標準輸入讀取檔名；檔名必須以換行字元作為結尾\n"
 "      --files0[=檔案] 類似 --files 但是以 null 空字元作結尾"
 
-#: src/xz/message.c:1134
+#: src/xz/message.c:1120
 msgid ""
 "\n"
 " Basic file format and compression options:\n"
@@ -629,7 +637,7 @@ msgstr ""
 "\n"
 " 基本檔案格式與壓縮選項：\n"
 
-#: src/xz/message.c:1136
+#: src/xz/message.c:1122
 msgid ""
 "  -F, --format=FMT    file format to encode or decode; possible values are\n"
 "                      `auto' (default), `xz', `lzma', and `raw'\n"
@@ -641,11 +649,11 @@ msgstr ""
 "  -C, --check=檢查碼   完整性檢查類型：「none」（請小心使用）、「crc32」、\n"
 "                      「crc64」（預設值）或「sha256」"
 
-#: src/xz/message.c:1141
+#: src/xz/message.c:1127
 msgid "      --ignore-check  don't verify the integrity check when decompressing"
 msgstr "      --ignore-check  不在解壓縮時驗證完整性"
 
-#: src/xz/message.c:1145
+#: src/xz/message.c:1131
 msgid ""
 "  -0 ... -9           compression preset; default is 6; take compressor *and*\n"
 "                      decompressor memory usage into account before using 7-9!"
@@ -653,7 +661,7 @@ msgstr ""
 "  -0 ... -9           壓縮設定檔；預設值為 6；使用 7-9 前請考慮\n"
 "                      壓縮和解壓縮所使用的記憶體！"
 
-#: src/xz/message.c:1149
+#: src/xz/message.c:1135
 msgid ""
 "  -e, --extreme       try to improve compression ratio by using more CPU time;\n"
 "                      does not affect decompressor memory requirements"
@@ -661,7 +669,7 @@ msgstr ""
 "  -e, --extreme       使用更多 CPU 時間以嘗試改善壓縮比；\n"
 "                      不影響解壓縮器的記憶體需求"
 
-#: src/xz/message.c:1153
+#: src/xz/message.c:1139
 msgid ""
 "  -T, --threads=NUM   use at most NUM threads; the default is 1; set to 0\n"
 "                      to use as many threads as there are processor cores"
@@ -669,7 +677,7 @@ msgstr ""
 "  -T, --threads=NUM   使用最多 NUM 個執行緒；預設為 1；設成 0 則使用所有的\n"
 "                      處理機核心"
 
-#: src/xz/message.c:1158
+#: src/xz/message.c:1144
 msgid ""
 "      --block-size=SIZE\n"
 "                      start a new .xz block after every SIZE bytes of input;\n"
@@ -679,14 +687,14 @@ msgstr ""
 "                      輸入每 <大小> 位元組後，開始一個新 .xz 區塊；\n"
 "                      使用此功能以設定多執行緒壓縮的區塊大小"
 
-#: src/xz/message.c:1162
+#: src/xz/message.c:1148
 msgid ""
 "      --block-list=SIZES\n"
 "                      start a new .xz block after the given comma-separated\n"
 "                      intervals of uncompressed data"
 msgstr ""
 
-#: src/xz/message.c:1166
+#: src/xz/message.c:1152
 msgid ""
 "      --flush-timeout=TIMEOUT\n"
 "                      when compressing, if more than TIMEOUT milliseconds has\n"
@@ -694,7 +702,7 @@ msgid ""
 "                      would block, all pending data is flushed out"
 msgstr ""
 
-#: src/xz/message.c:1172
+#: src/xz/message.c:1158
 #, no-c-format
 msgid ""
 "      --memlimit-compress=LIMIT\n"
@@ -709,7 +717,7 @@ msgstr ""
 "                      限制壓縮、解壓縮或兩者的記憶體用量上限；\n"
 "                      <限制> 可以是位元組、記憶體百分比 (%)、或 0（預設值）"
 
-#: src/xz/message.c:1179
+#: src/xz/message.c:1165
 msgid ""
 "      --no-adjust     if compression settings exceed the memory usage limit,\n"
 "                      give an error instead of adjusting the settings downwards"
@@ -717,7 +725,7 @@ msgstr ""
 "      --no-adjust     若壓縮設定超過記憶體用量上限，請給出\n"
 "                      錯誤而非下調設定"
 
-#: src/xz/message.c:1185
+#: src/xz/message.c:1171
 msgid ""
 "\n"
 " Custom filter chain for compression (alternative for using presets):"
@@ -725,7 +733,7 @@ msgstr ""
 "\n"
 " 自訂壓縮篩選鏈（使用設定檔時選用）："
 
-#: src/xz/message.c:1194
+#: src/xz/message.c:1180
 msgid ""
 "\n"
 "  --lzma1[=OPTS]      LZMA1 or LZMA2; OPTS is a comma-separated list of zero or\n"
@@ -753,7 +761,7 @@ msgstr ""
 "                        mf=名稱    尋找符合搜尋器 (hc3, hc4, bt2, bt3, bt4; bt4)\n"
 "                        depth=NUM  最大搜尋深度；0=自動（預設）"
 
-#: src/xz/message.c:1209
+#: src/xz/message.c:1195
 msgid ""
 "\n"
 "  --x86[=OPTS]        x86 BCJ filter (32-bit and 64-bit)\n"
@@ -775,7 +783,7 @@ msgstr ""
 "                      所有 BCJ 篩選器可用的 OPTS：\n"
 "                        start=NUM  轉換起始位移（預設值=0）"
 
-#: src/xz/message.c:1221
+#: src/xz/message.c:1207
 msgid ""
 "\n"
 "  --delta[=OPTS]      Delta filter; valid OPTS (valid values; default):\n"
@@ -783,7 +791,7 @@ msgid ""
 "                                   from each other (1-256; 1)"
 msgstr ""
 
-#: src/xz/message.c:1229
+#: src/xz/message.c:1215
 msgid ""
 "\n"
 " Other options:\n"
@@ -791,7 +799,7 @@ msgstr ""
 "\n"
 " 其他選項：\n"
 
-#: src/xz/message.c:1232
+#: src/xz/message.c:1218
 msgid ""
 "  -q, --quiet         suppress warnings; specify twice to suppress errors too\n"
 "  -v, --verbose       be verbose; specify twice for even more verbose"
@@ -799,21 +807,21 @@ msgstr ""
 "  -q, --quiet         隱藏警告訊息；指定兩次也一併隱藏錯誤訊息\n"
 "  -v, --verbose       輸出較詳細內容；指定兩次更詳細輸出"
 
-#: src/xz/message.c:1237
+#: src/xz/message.c:1223
 msgid "  -Q, --no-warn       make warnings not affect the exit status"
 msgstr "  -Q, --no-warn       即使有警告，退出狀態碼仍不變"
 
-#: src/xz/message.c:1239
+#: src/xz/message.c:1225
 msgid "      --robot         use machine-parsable messages (useful for scripts)"
 msgstr "      --robot         使用機器可解析訊息（適合用於指令稿）"
 
-#: src/xz/message.c:1242
+#: src/xz/message.c:1228
 msgid ""
 "      --info-memory   display the total amount of RAM and the currently active\n"
 "                      memory usage limits, and exit"
 msgstr "      --info-memory   顯示記憶體總量和使用中的記憶體用量限制後退出"
 
-#: src/xz/message.c:1245
+#: src/xz/message.c:1231
 msgid ""
 "  -h, --help          display the short help (lists only the basic options)\n"
 "  -H, --long-help     display this long help and exit"
@@ -821,7 +829,7 @@ msgstr ""
 "  -h, --help          顯示較短說明（僅列出基本選項）\n"
 "  -H, --long-help     顯示較長說明後退出"
 
-#: src/xz/message.c:1249
+#: src/xz/message.c:1235
 msgid ""
 "  -h, --help          display this short help and exit\n"
 "  -H, --long-help     display the long help (lists also the advanced options)"
@@ -829,11 +837,11 @@ msgstr ""
 "  -h, --help          顯示較短說明後退出\n"
 "  -H, --long-help     顯示較長說明（也列出進階選項）"
 
-#: src/xz/message.c:1254
+#: src/xz/message.c:1240
 msgid "  -V, --version       display the version number and exit"
 msgstr "  -V, --version       顯示版本號碼後退出"
 
-#: src/xz/message.c:1256
+#: src/xz/message.c:1242
 msgid ""
 "\n"
 "With no FILE, or when FILE is -, read standard input.\n"
@@ -845,17 +853,17 @@ msgstr ""
 #. for this package. Please add _another line_ saying
 #. "Report translation bugs to <...>\n" with the email or WWW
 #. address for translation bugs. Thanks.
-#: src/xz/message.c:1262
+#: src/xz/message.c:1248
 #, c-format
 msgid "Report bugs to <%s> (in English or Finnish).\n"
 msgstr "請回報臭蟲至 <%s>（使用英文或芬蘭語）。\n"
 
-#: src/xz/message.c:1264
+#: src/xz/message.c:1250
 #, c-format
 msgid "%s home page: <%s>\n"
 msgstr "%s 首頁：<%s>\n"
 
-#: src/xz/message.c:1268
+#: src/xz/message.c:1254
 msgid "THIS IS A DEVELOPMENT VERSION NOT INTENDED FOR PRODUCTION USE."
 msgstr "此為開發版本，不打算在生產環境使用。"
 
@@ -927,28 +935,22 @@ msgstr "有效的後綴有「KiB」(2^10)、「MiB」(2^20) 及「GiB」(2^30)�
 msgid "Value of the option `%s' must be in the range [%<PRIu64>, %<PRIu64>]"
 msgstr "選項「%s」的數值必須在 [%<PRIu64>, %<PRIu64>] 範圍內"
 
-#: src/xz/util.c:267
+#: src/xz/util.c:257
 msgid "Empty filename, skipping"
 msgstr "空檔名，跳過"
 
-#: src/xz/util.c:281
+#: src/xz/util.c:271
 msgid "Compressed data cannot be read from a terminal"
 msgstr "不能從終端機讀入已壓縮資料"
 
-#: src/xz/util.c:294
+#: src/xz/util.c:284
 msgid "Compressed data cannot be written to a terminal"
 msgstr "不能將已壓縮資料寫入終端機"
 
-#: src/common/tuklib_exit.c:40
+#: src/common/tuklib_exit.c:39
 msgid "Writing to standard output failed"
 msgstr "寫入標準輸出失敗"
 
-#: src/common/tuklib_exit.c:43
+#: src/common/tuklib_exit.c:42
 msgid "Unknown error"
 msgstr "未知錯誤"
-
-#~ msgid "Sandbox is disabled due to incompatible command line arguments"
-#~ msgstr "由於指定不相容的指令列參數，已停用沙盒"
-
-#~ msgid "Sandbox was successfully enabled"
-#~ msgstr "已成功啟用沙盒"
