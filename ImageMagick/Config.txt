@@ -21,6 +21,18 @@ src\liblzma\rangecoder
 src\liblzma\simple
 windows
 
+[INCLUDES]
+src\common
+src\liblzma\api
+src\liblzma\check
+src\liblzma\delta
+src\liblzma\common
+src\liblzma\lz
+src\liblzma\lzma
+src\liblzma\rangecoder
+src\liblzma\simple
+windows
+
 [EXCLUDES]
 crc32_small.c
 crc32_tablegen.c
