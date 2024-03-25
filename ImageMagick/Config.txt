@@ -1,0 +1,37 @@
+[DLL]
+
+[LICENSE]
+COPYING.LGPLv2.1
+
+[DEFINES]
+HAVE_CONFIG_H
+
+[DEFINES_DLL]
+DLL_EXPORT
+
+[DIRECTORIES]
+src\common
+src\liblzma\api
+src\liblzma\check
+src\liblzma\common
+src\liblzma\delta
+src\liblzma\lz
+src\liblzma\lzma
+src\liblzma\rangecoder
+src\liblzma\simple
+windows
+
+[EXCLUDES]
+crc32_small.c
+crc32_tablegen.c
+crc64_small.c
+crc64_tablegen.c
+common_w32res.rc
+fastpos_tablegen.c
+price_tablegen.c
+
+[CONFIG_DEFINE]
+/*
+  Define to use the lzma compression library
+*/
+#define MAGICKCORE_LZMA_DELEGATE
