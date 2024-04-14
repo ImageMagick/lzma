@@ -17,9 +17,7 @@
 // gives wrong results (from our point of view).
 #if defined(_WIN32) || defined(__CYGWIN__)
 #	ifndef _WIN32_WINNT
-#       if !defined(WINAPI_FAMILY) || !(WINAPI_FAMILY==WINAPI_FAMILY_PC_APP || WINAPI_FAMILY==WINAPI_FAMILY_PHONE_APP)
-#		    define _WIN32_WINNT 0x0500
-#       endif
+#		define _WIN32_WINNT 0x0500
 #	endif
 #	include <windows.h>
 
@@ -92,13 +90,6 @@ tuklib_physmem(void)
 	uint64_t ret = 0;
 
 #if defined(_WIN32) || defined(__CYGWIN__)
-#include <winapifamily.h>
-#if (_WIN32_WINNT >= 0x501) || (defined(WINAPI_FAMILY_PARTITION) && WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_APP) && !WINAPI_FAMILY_PARTITION(WINAPI_PARTITION_DESKTOP))
-	MEMORYSTATUSEX meminfo;
-	meminfo.dwLength = sizeof(meminfo);
-	if (GlobalMemoryStatusEx(&meminfo))
-		ret = meminfo.ullTotalPhys;
-#else
 	if ((GetVersion() & 0xFF) >= 5) {
 		// Windows 2000 and later have GlobalMemoryStatusEx() which
 		// supports reporting values greater than 4 GiB. To keep the
@@ -134,7 +125,6 @@ tuklib_physmem(void)
 		GlobalMemoryStatus(&meminfo);
 		ret = meminfo.dwTotalPhys;
 	}
-#endif
 
 #elif defined(__OS2__)
 	unsigned long mem;
