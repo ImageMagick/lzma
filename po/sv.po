@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xz 5.4.4-pre1\n"
 "Report-Msgid-Bugs-To: xz@tukaani.org\n"
-"POT-Creation-Date: 2023-10-31 22:33+0800\n"
+"POT-Creation-Date: 2023-07-18 23:34+0800\n"
 "PO-Revision-Date: 2023-07-19 20:25+0200\n"
 "Last-Translator: Luna Jernberg <droidbittin@gmail.com>\n"
 "Language-Team: Swedish <tp-sv@listor.tp-sv.se>\n"
@@ -51,8 +51,8 @@ msgstr "Endast en fil kan anges med ”--files” eller ”--files0”."
 #. TRANSLATORS: This is a translatable
 #. string because French needs a space
 #. before the colon ("%s : %s").
-#: src/xz/args.c:533 src/xz/coder.c:692 src/xz/coder.c:708 src/xz/coder.c:968
-#: src/xz/coder.c:971 src/xz/file_io.c:605 src/xz/file_io.c:679
+#: src/xz/args.c:533 src/xz/coder.c:691 src/xz/coder.c:707 src/xz/coder.c:967
+#: src/xz/coder.c:970 src/xz/file_io.c:605 src/xz/file_io.c:679
 #: src/xz/file_io.c:769 src/xz/file_io.c:940 src/xz/list.c:369
 #: src/xz/list.c:415 src/xz/list.c:477 src/xz/list.c:581 src/xz/list.c:590
 #, c-format
@@ -84,64 +84,64 @@ msgstr "Med --format=raw, --suffix=.SUF krävs om data inte skrivs till standard
 msgid "Maximum number of filters is four"
 msgstr "Maximalt antal filter är fyra"
 
-#: src/xz/coder.c:135
+#: src/xz/coder.c:134
 msgid "Memory usage limit is too low for the given filter setup."
 msgstr "Begränsning av minnesanvändning är allt för låg för den angivna filteruppsättningen."
 
-#: src/xz/coder.c:170
+#: src/xz/coder.c:169
 msgid "Using a preset in raw mode is discouraged."
 msgstr "Det avråds från att använda en förinställning i rått läge."
 
-#: src/xz/coder.c:172
+#: src/xz/coder.c:171
 msgid "The exact options of the presets may vary between software versions."
 msgstr "De exakta flaggorna för förinställningar kan variera mellan programversioner."
 
-#: src/xz/coder.c:195
+#: src/xz/coder.c:194
 msgid "The .lzma format supports only the LZMA1 filter"
 msgstr "Formatet .lzma har endast stöd för LZMA1-filtret"
 
-#: src/xz/coder.c:203
+#: src/xz/coder.c:202
 msgid "LZMA1 cannot be used with the .xz format"
 msgstr "LZMA1 kan inte användas tillsammans med .xz-formatet"
 
-#: src/xz/coder.c:220
+#: src/xz/coder.c:219
 msgid "The filter chain is incompatible with --flush-timeout"
 msgstr "Filterkedjan är inkompatibel med --flush-timeout"
 
-#: src/xz/coder.c:226
+#: src/xz/coder.c:225
 msgid "Switching to single-threaded mode due to --flush-timeout"
 msgstr "Växlar till entrådsläge på grund av --flush-timeout"
 
-#: src/xz/coder.c:250
+#: src/xz/coder.c:249
 #, c-format
 msgid "Using up to %<PRIu32> threads."
 msgstr "Använder upp till %<PRIu32> trådar."
 
-#: src/xz/coder.c:266
+#: src/xz/coder.c:265
 msgid "Unsupported filter chain or filter options"
 msgstr "Filterkedja eller filterflaggor stöds inte"
 
-#: src/xz/coder.c:278
+#: src/xz/coder.c:277
 #, c-format
 msgid "Decompression will need %s MiB of memory."
 msgstr "Dekomprimering kommer att kräva %s MiB minne."
 
-#: src/xz/coder.c:310
+#: src/xz/coder.c:309
 #, c-format
 msgid "Reduced the number of threads from %s to %s to not exceed the memory usage limit of %s MiB"
 msgstr "Reducerade antalet trådar från %s till %s för att inte överstiga begränsningen av minnesanvändning på %s MiB"
 
-#: src/xz/coder.c:330
+#: src/xz/coder.c:329
 #, c-format
 msgid "Reduced the number of threads from %s to one. The automatic memory usage limit of %s MiB is still being exceeded. %s MiB of memory is required. Continuing anyway."
 msgstr "Reducerade antalet trådar från %s till en. Den automatiska minnesanvändningsgränsen på %s MiB överskrids fortfarande. %s MiB minne krävs. Fortsätter i alla fall."
 
-#: src/xz/coder.c:357
+#: src/xz/coder.c:356
 #, c-format
 msgid "Switching to single-threaded mode to not exceed the memory usage limit of %s MiB"
 msgstr "Ändrar till enkeltrådat läge för att inte överskrida minnesanvändningsgränsen på %s MiB"
 
-#: src/xz/coder.c:412
+#: src/xz/coder.c:411
 #, c-format
 msgid "Adjusted LZMA%c dictionary size from %s MiB to %s MiB to not exceed the memory usage limit of %s MiB"
 msgstr "Justerade storlek för LZMA%c-lexikon från %s MiB till %s MiB för att inte överstiga begränsningen av minnesanvändning på %s MiB"
@@ -244,37 +244,37 @@ msgstr "Fel vid återställning av statusflaggorna för standard in: %s"
 msgid "Error getting the file status flags from standard output: %s"
 msgstr "Fel vid hämtning av filstatusflaggorna från standard ut: %s"
 
-#: src/xz/file_io.c:1081
+#: src/xz/file_io.c:1060
 #, c-format
 msgid "Error restoring the O_APPEND flag to standard output: %s"
 msgstr "Fel vid återställning av O_APPEND-flaggan till standard ut: %s"
 
-#: src/xz/file_io.c:1093
+#: src/xz/file_io.c:1072
 #, c-format
 msgid "%s: Closing the file failed: %s"
 msgstr "%s: Stängning av filen misslyckades: %s"
 
-#: src/xz/file_io.c:1129 src/xz/file_io.c:1391
+#: src/xz/file_io.c:1108 src/xz/file_io.c:1371
 #, c-format
 msgid "%s: Seeking failed when trying to create a sparse file: %s"
 msgstr "%s: Sökning misslyckades vid skapande av gles fil: %s"
 
-#: src/xz/file_io.c:1229
+#: src/xz/file_io.c:1209
 #, c-format
 msgid "%s: Read error: %s"
 msgstr "%s: Läsfel: %s"
 
-#: src/xz/file_io.c:1259
+#: src/xz/file_io.c:1239
 #, c-format
 msgid "%s: Error seeking the file: %s"
 msgstr "%s: Fel vid sökning i fil: %s"
 
-#: src/xz/file_io.c:1283
+#: src/xz/file_io.c:1263
 #, c-format
 msgid "%s: Unexpected end of file"
 msgstr "%s: Oväntat filslut"
 
-#: src/xz/file_io.c:1342
+#: src/xz/file_io.c:1322
 #, c-format
 msgid "%s: Write error: %s"
 msgstr "%s: Skrivfel: %s"
@@ -983,12 +983,12 @@ msgstr "%s: Ogiltigt flaggnamn"
 msgid "%s: Invalid option value"
 msgstr "%s: Ogiltigt flaggvärde"
 
-#: src/xz/options.c:248
+#: src/xz/options.c:247
 #, c-format
 msgid "Unsupported LZMA1/LZMA2 preset: %s"
 msgstr "LZMA1/LZMA2-förinställning stöds inte: %s"
 
-#: src/xz/options.c:356
+#: src/xz/options.c:355
 msgid "The sum of lc and lp must not exceed 4"
 msgstr "Summan av lc och lp får inte överstiga 4"
 
@@ -1007,30 +1007,30 @@ msgstr "%s: Fil har redan ”%s”-ändelse, hoppar över"
 msgid "%s: Invalid filename suffix"
 msgstr "%s: Ogiltig filnamnsändelse"
 
-#: src/xz/util.c:107
+#: src/xz/util.c:71
 #, c-format
 msgid "%s: Value is not a non-negative decimal integer"
 msgstr "%s: Värdet är inte ett icke-negativt, decimalt heltal"
 
-#: src/xz/util.c:149
+#: src/xz/util.c:113
 #, c-format
 msgid "%s: Invalid multiplier suffix"
 msgstr "%s: Ogiltig multipeländelse"
 
-#: src/xz/util.c:151
+#: src/xz/util.c:115
 msgid "Valid suffixes are `KiB' (2^10), `MiB' (2^20), and `GiB' (2^30)."
 msgstr "Giltiga ändelser är ”KiB” (2^10), ”MiB” (2^20) och ”GiB” (2^30)."
 
-#: src/xz/util.c:168
+#: src/xz/util.c:132
 #, c-format
 msgid "Value of the option `%s' must be in the range [%<PRIu64>, %<PRIu64>]"
 msgstr "Värdet för flaggan ”%s” måste vara inom intervallet [%<PRIu64>, %<PRIu64>]"
 
-#: src/xz/util.c:270
+#: src/xz/util.c:269
 msgid "Compressed data cannot be read from a terminal"
 msgstr "Komprimerad data kan inte läsas från en terminal"
 
-#: src/xz/util.c:283
+#: src/xz/util.c:282
 msgid "Compressed data cannot be written to a terminal"
 msgstr "Komprimerad data kan inte skrivas till en terminal"
 

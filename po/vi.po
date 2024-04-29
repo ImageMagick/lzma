@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xz 5.4.4-pre1\n"
 "Report-Msgid-Bugs-To: xz@tukaani.org\n"
-"POT-Creation-Date: 2023-10-31 22:33+0800\n"
+"POT-Creation-Date: 2023-07-18 23:34+0800\n"
 "PO-Revision-Date: 2023-07-22 10:00+0700\n"
 "Last-Translator: Trần Ngọc Quân <vnwildman@gmail.com>\n"
 "Language-Team: Vietnamese <translation-team-vi@lists.sourceforge.net>\n"
 "Language: vi\n"
+"X-Bugs: Report translation errors to the Language-Team address.\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Bugs: Report translation errors to the Language-Team address.\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
 #: src/xz/args.c:77
@@ -49,8 +49,8 @@ msgstr "Chỉ được đưa ra một tập tin cho “--files” hay “--files
 #. TRANSLATORS: This is a translatable
 #. string because French needs a space
 #. before the colon ("%s : %s").
-#: src/xz/args.c:533 src/xz/coder.c:692 src/xz/coder.c:708 src/xz/coder.c:968
-#: src/xz/coder.c:971 src/xz/file_io.c:605 src/xz/file_io.c:679
+#: src/xz/args.c:533 src/xz/coder.c:691 src/xz/coder.c:707 src/xz/coder.c:967
+#: src/xz/coder.c:970 src/xz/file_io.c:605 src/xz/file_io.c:679
 #: src/xz/file_io.c:769 src/xz/file_io.c:940 src/xz/list.c:369
 #: src/xz/list.c:415 src/xz/list.c:477 src/xz/list.c:581 src/xz/list.c:590
 #, c-format
@@ -82,64 +82,64 @@ msgstr "Với --format=raw, --suffix=.SUF được yêu cầu trừ trường h�
 msgid "Maximum number of filters is four"
 msgstr "Số lượng bộ lọc tối đa là bốn"
 
-#: src/xz/coder.c:135
+#: src/xz/coder.c:134
 msgid "Memory usage limit is too low for the given filter setup."
 msgstr "Mức giới hạn dùng bộ nhớ là quá thấp cho việc cài đặt bộ lọc đã cho."
 
-#: src/xz/coder.c:170
+#: src/xz/coder.c:169
 msgid "Using a preset in raw mode is discouraged."
 msgstr "Dùng hiện tại trong chế độ thô là ngớ ngẩn."
 
-#: src/xz/coder.c:172
+#: src/xz/coder.c:171
 msgid "The exact options of the presets may vary between software versions."
 msgstr "Các tùy chọn trích xuất của chỉnh trước có thể biến đổi phụ thuộc vào phiên bản."
 
-#: src/xz/coder.c:195
+#: src/xz/coder.c:194
 msgid "The .lzma format supports only the LZMA1 filter"
 msgstr "Định dạng .lzma chỉ hỗ trợ bộ lọc LZMA1"
 
-#: src/xz/coder.c:203
+#: src/xz/coder.c:202
 msgid "LZMA1 cannot be used with the .xz format"
 msgstr "LZMA1 không thể được dùng với định dạng .xz"
 
-#: src/xz/coder.c:220
+#: src/xz/coder.c:219
 msgid "The filter chain is incompatible with --flush-timeout"
 msgstr "Móc xích lọc là không tương thích với --flush-timeout"
 
-#: src/xz/coder.c:226
+#: src/xz/coder.c:225
 msgid "Switching to single-threaded mode due to --flush-timeout"
 msgstr "Chuyển sang chế độ đơn tuyến trình bởi vì --flush-timeout"
 
-#: src/xz/coder.c:250
+#: src/xz/coder.c:249
 #, c-format
 msgid "Using up to %<PRIu32> threads."
 msgstr "Dùng đến %<PRIu32> tuyến trình."
 
-#: src/xz/coder.c:266
+#: src/xz/coder.c:265
 msgid "Unsupported filter chain or filter options"
 msgstr "Không hỗ trợ lọc móc xích hay tùy chọn lọc"
 
-#: src/xz/coder.c:278
+#: src/xz/coder.c:277
 #, c-format
 msgid "Decompression will need %s MiB of memory."
 msgstr "Giải nén sẽ cần %s MiB bộ nhớ."
 
-#: src/xz/coder.c:310
+#: src/xz/coder.c:309
 #, c-format
 msgid "Reduced the number of threads from %s to %s to not exceed the memory usage limit of %s MiB"
 msgstr "Đã giảm số lượng tuyến trình từ %s xuống %s để không vượt quá giới hạn sử dụng bộ nhớ là %s MiB"
 
-#: src/xz/coder.c:330
+#: src/xz/coder.c:329
 #, c-format
 msgid "Reduced the number of threads from %s to one. The automatic memory usage limit of %s MiB is still being exceeded. %s MiB of memory is required. Continuing anyway."
 msgstr "Đã giảm số lượng tuyến trình từ %s xuống còn một. Giới hạn sử dụng bộ nhớ tự động %s MiB vẫn đang bị vượt quá. Cần có %s MiB bộ nhớ. Vẫn tiếp tục."
 
-#: src/xz/coder.c:357
+#: src/xz/coder.c:356
 #, c-format
 msgid "Switching to single-threaded mode to not exceed the memory usage limit of %s MiB"
 msgstr "Chuyển sang chế độ đơn tuyến trình để không vượt quá giới hạn sử dụng bộ nhớ là %sMiB"
 
-#: src/xz/coder.c:412
+#: src/xz/coder.c:411
 #, c-format
 msgid "Adjusted LZMA%c dictionary size from %s MiB to %s MiB to not exceed the memory usage limit of %s MiB"
 msgstr "Chỉnh cỡ từ điển LZMA%c từ %s MiB thành %s MiB để không vượt quá giới hạn tiêu dùng bộ nhớ là %s MiB"
@@ -242,37 +242,37 @@ msgstr "Gặp lỗi khi phục hồi các cờ trạng thái tới đầu vào t
 msgid "Error getting the file status flags from standard output: %s"
 msgstr "Gặp lỗi khi lấy các cờ trạng thái tập tin từ đầu vào tiêu chuẩn: %s"
 
-#: src/xz/file_io.c:1081
+#: src/xz/file_io.c:1060
 #, c-format
 msgid "Error restoring the O_APPEND flag to standard output: %s"
 msgstr "Gặp lỗi khi phục hồi cờ O_APPEND trên đầu ra tiêu chuẩn: %s"
 
-#: src/xz/file_io.c:1093
+#: src/xz/file_io.c:1072
 #, c-format
 msgid "%s: Closing the file failed: %s"
 msgstr "%s: Gặp lỗi khi đóng tập tin: %s"
 
-#: src/xz/file_io.c:1129 src/xz/file_io.c:1391
+#: src/xz/file_io.c:1108 src/xz/file_io.c:1371
 #, c-format
 msgid "%s: Seeking failed when trying to create a sparse file: %s"
 msgstr "%s: Gặp lỗi khi di chuyển vị trí đọc khi cố tạo một tập tin rải rác: %s"
 
-#: src/xz/file_io.c:1229
+#: src/xz/file_io.c:1209
 #, c-format
 msgid "%s: Read error: %s"
 msgstr "%s: Lỗi đọc: %s"
 
-#: src/xz/file_io.c:1259
+#: src/xz/file_io.c:1239
 #, c-format
 msgid "%s: Error seeking the file: %s"
 msgstr "%s: Gặp lỗi khi di chuyển vị trí đọc tập tin: %s"
 
-#: src/xz/file_io.c:1283
+#: src/xz/file_io.c:1263
 #, c-format
 msgid "%s: Unexpected end of file"
 msgstr "%s: Kết thúc tập tin bất ngờ"
 
-#: src/xz/file_io.c:1342
+#: src/xz/file_io.c:1322
 #, c-format
 msgid "%s: Write error: %s"
 msgstr "%s: Lỗi ghi: %s"
@@ -969,12 +969,12 @@ msgstr "%s: Tên tùy chọn không hợp lệ"
 msgid "%s: Invalid option value"
 msgstr "%s: Giá trị của tùy chọn không hợp lệ"
 
-#: src/xz/options.c:248
+#: src/xz/options.c:247
 #, c-format
 msgid "Unsupported LZMA1/LZMA2 preset: %s"
 msgstr "Hiện nay chưa hỗ trợ LZMA1/LZMA2: %s"
 
-#: src/xz/options.c:356
+#: src/xz/options.c:355
 msgid "The sum of lc and lp must not exceed 4"
 msgstr "Tổng số lượng lc và lp không được vượt quá 4"
 
@@ -993,30 +993,30 @@ msgstr "%s: Tập tin đã sẵn có hậu tố “%s” nên bỏ qua"
 msgid "%s: Invalid filename suffix"
 msgstr "%s: Hậu tố tên tập tin không hợp lệ"
 
-#: src/xz/util.c:107
+#: src/xz/util.c:71
 #, c-format
 msgid "%s: Value is not a non-negative decimal integer"
 msgstr "%s: Giá trị không phải là số thập phân nguyên không âm"
 
-#: src/xz/util.c:149
+#: src/xz/util.c:113
 #, c-format
 msgid "%s: Invalid multiplier suffix"
 msgstr "%s: Hậu tố nhân tố không hợp lệ"
 
-#: src/xz/util.c:151
+#: src/xz/util.c:115
 msgid "Valid suffixes are `KiB' (2^10), `MiB' (2^20), and `GiB' (2^30)."
 msgstr "Các hậu tố hợp lệ là “KiB” (2^10), “MiB” (2^20), và “GiB” (2^30)."
 
-#: src/xz/util.c:168
+#: src/xz/util.c:132
 #, c-format
 msgid "Value of the option `%s' must be in the range [%<PRIu64>, %<PRIu64>]"
 msgstr "Giá trị cuả tùy chọn “%s” phải nằm trong vùng [%<PRIu64>, %<PRIu64>]"
 
-#: src/xz/util.c:270
+#: src/xz/util.c:269
 msgid "Compressed data cannot be read from a terminal"
 msgstr "Dữ liệu đã nén không thể đọc từ thiết bị cuối"
 
-#: src/xz/util.c:283
+#: src/xz/util.c:282
 msgid "Compressed data cannot be written to a terminal"
 msgstr "Dữ liệu đã nén không thể ghi ra thiết bị cuối"
 

@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: xz 5.4.4-pre1\n"
 "Report-Msgid-Bugs-To: xz@tukaani.org\n"
-"POT-Creation-Date: 2023-10-31 22:33+0800\n"
+"POT-Creation-Date: 2023-07-18 23:34+0800\n"
 "PO-Revision-Date: 2023-07-19 14:24-0400\n"
 "Last-Translator: Boyuan Yang <073plan@gmail.com>\n"
 "Language-Team: Chinese (simplified) <i18n-zh@googlegroups.com>\n"
@@ -50,8 +50,8 @@ msgstr "仅可使用“--files”或“--files0”指定一个文件。"
 #. TRANSLATORS: This is a translatable
 #. string because French needs a space
 #. before the colon ("%s : %s").
-#: src/xz/args.c:533 src/xz/coder.c:692 src/xz/coder.c:708 src/xz/coder.c:968
-#: src/xz/coder.c:971 src/xz/file_io.c:605 src/xz/file_io.c:679
+#: src/xz/args.c:533 src/xz/coder.c:691 src/xz/coder.c:707 src/xz/coder.c:967
+#: src/xz/coder.c:970 src/xz/file_io.c:605 src/xz/file_io.c:679
 #: src/xz/file_io.c:769 src/xz/file_io.c:940 src/xz/list.c:369
 #: src/xz/list.c:415 src/xz/list.c:477 src/xz/list.c:581 src/xz/list.c:590
 #, c-format
@@ -83,64 +83,64 @@ msgstr "启用 --format-raw 选项时，必须指定 --suffix=.SUF 获知写入�
 msgid "Maximum number of filters is four"
 msgstr "过滤器最多数量为四"
 
-#: src/xz/coder.c:135
+#: src/xz/coder.c:134
 msgid "Memory usage limit is too low for the given filter setup."
 msgstr "内存用量限制对指定过滤器设置过低。"
 
-#: src/xz/coder.c:170
+#: src/xz/coder.c:169
 msgid "Using a preset in raw mode is discouraged."
 msgstr "不推荐在 raw 模式使用预设等级。"
 
-#: src/xz/coder.c:172
+#: src/xz/coder.c:171
 msgid "The exact options of the presets may vary between software versions."
 msgstr "各个预设等级所使用的准确选项列表在不同软件版本之间可能不同。"
 
-#: src/xz/coder.c:195
+#: src/xz/coder.c:194
 msgid "The .lzma format supports only the LZMA1 filter"
 msgstr ".lzma 格式只支持 LZMA1 过滤器"
 
-#: src/xz/coder.c:203
+#: src/xz/coder.c:202
 msgid "LZMA1 cannot be used with the .xz format"
 msgstr "LZMA1 无法用于 .xz 格式"
 
-#: src/xz/coder.c:220
+#: src/xz/coder.c:219
 msgid "The filter chain is incompatible with --flush-timeout"
 msgstr "过滤器链和 --flush-timeout 不兼容"
 
-#: src/xz/coder.c:226
+#: src/xz/coder.c:225
 msgid "Switching to single-threaded mode due to --flush-timeout"
 msgstr "因 --flush-timeout 而切换至单线程模式"
 
-#: src/xz/coder.c:250
+#: src/xz/coder.c:249
 #, c-format
 msgid "Using up to %<PRIu32> threads."
 msgstr "使用最多 %<PRIu32> 个线程。"
 
-#: src/xz/coder.c:266
+#: src/xz/coder.c:265
 msgid "Unsupported filter chain or filter options"
 msgstr "不支持的过滤器链或过滤器选项"
 
-#: src/xz/coder.c:278
+#: src/xz/coder.c:277
 #, c-format
 msgid "Decompression will need %s MiB of memory."
 msgstr "解压缩需要 %s MiB 的内存。"
 
-#: src/xz/coder.c:310
+#: src/xz/coder.c:309
 #, c-format
 msgid "Reduced the number of threads from %s to %s to not exceed the memory usage limit of %s MiB"
 msgstr "已将所使用的线程数从 %s 减小为 %s，以不超出 %s MiB 的内存用量限制"
 
-#: src/xz/coder.c:330
+#: src/xz/coder.c:329
 #, c-format
 msgid "Reduced the number of threads from %s to one. The automatic memory usage limit of %s MiB is still being exceeded. %s MiB of memory is required. Continuing anyway."
 msgstr "已将所使用的线程数从 %s 减小为 1。这仍然超出了自动的内存使用限制 %s MiB。需要 %s MiB 的内存。继续操作。"
 
-#: src/xz/coder.c:357
+#: src/xz/coder.c:356
 #, c-format
 msgid "Switching to single-threaded mode to not exceed the memory usage limit of %s MiB"
 msgstr "正在切换到单线程模式以不超出 %s MiB 的内存用量限制"
 
-#: src/xz/coder.c:412
+#: src/xz/coder.c:411
 #, c-format
 msgid "Adjusted LZMA%c dictionary size from %s MiB to %s MiB to not exceed the memory usage limit of %s MiB"
 msgstr "已调整 LZMA%c 字典大小（从 %s MiB 调整为 %s MiB），以不超出 %s MiB 的内存用量限制"
@@ -243,37 +243,37 @@ msgstr "回复标准输入的状态标志时出错：%s"
 msgid "Error getting the file status flags from standard output: %s"
 msgstr "获取标准输出的文件状态标志时出错：%s"
 
-#: src/xz/file_io.c:1081
+#: src/xz/file_io.c:1060
 #, c-format
 msgid "Error restoring the O_APPEND flag to standard output: %s"
 msgstr "恢复标准输出的 O_APPEND 标志时出错：%s"
 
-#: src/xz/file_io.c:1093
+#: src/xz/file_io.c:1072
 #, c-format
 msgid "%s: Closing the file failed: %s"
 msgstr "%s：关闭文件失败：%s"
 
-#: src/xz/file_io.c:1129 src/xz/file_io.c:1391
+#: src/xz/file_io.c:1108 src/xz/file_io.c:1371
 #, c-format
 msgid "%s: Seeking failed when trying to create a sparse file: %s"
 msgstr "%s：尝试创建稀疏文件时 seek 失败：%s"
 
-#: src/xz/file_io.c:1229
+#: src/xz/file_io.c:1209
 #, c-format
 msgid "%s: Read error: %s"
 msgstr "%s：读取错误：%s"
 
-#: src/xz/file_io.c:1259
+#: src/xz/file_io.c:1239
 #, c-format
 msgid "%s: Error seeking the file: %s"
 msgstr "%s：seek 文件时出错：%s"
 
-#: src/xz/file_io.c:1283
+#: src/xz/file_io.c:1263
 #, c-format
 msgid "%s: Unexpected end of file"
 msgstr "%s：未预期的文件结束"
 
-#: src/xz/file_io.c:1342
+#: src/xz/file_io.c:1322
 #, c-format
 msgid "%s: Write error: %s"
 msgstr "%s：写入错误：%s"
@@ -958,12 +958,12 @@ msgstr "%s：无效的选项名称"
 msgid "%s: Invalid option value"
 msgstr "%s：无效的选项值"
 
-#: src/xz/options.c:248
+#: src/xz/options.c:247
 #, c-format
 msgid "Unsupported LZMA1/LZMA2 preset: %s"
 msgstr "不支持的 LZMA1/LZMA2 预设等级：%s"
 
-#: src/xz/options.c:356
+#: src/xz/options.c:355
 msgid "The sum of lc and lp must not exceed 4"
 msgstr "lc 和 lp 的和必须不大于 4"
 
@@ -982,30 +982,30 @@ msgstr "%s：文件已有“%s”后缀名，跳过"
 msgid "%s: Invalid filename suffix"
 msgstr "%s：无效的文件名后缀"
 
-#: src/xz/util.c:107
+#: src/xz/util.c:71
 #, c-format
 msgid "%s: Value is not a non-negative decimal integer"
 msgstr "%s：值不是非负十进制整数"
 
-#: src/xz/util.c:149
+#: src/xz/util.c:113
 #, c-format
 msgid "%s: Invalid multiplier suffix"
 msgstr "%s：无效的乘数后缀"
 
-#: src/xz/util.c:151
+#: src/xz/util.c:115
 msgid "Valid suffixes are `KiB' (2^10), `MiB' (2^20), and `GiB' (2^30)."
 msgstr "有效的后缀包括“KiB”（2^10）、“MiB”（2^20）和“GiB”（2^30）。"
 
-#: src/xz/util.c:168
+#: src/xz/util.c:132
 #, c-format
 msgid "Value of the option `%s' must be in the range [%<PRIu64>, %<PRIu64>]"
 msgstr "选项“%s”的值必须位于 [%<PRIu64>, %<PRIu64>] 范围内"
 
-#: src/xz/util.c:270
+#: src/xz/util.c:269
 msgid "Compressed data cannot be read from a terminal"
 msgstr "压缩数据不能从终端读取"
 
-#: src/xz/util.c:283
+#: src/xz/util.c:282
 msgid "Compressed data cannot be written to a terminal"
 msgstr "压缩数据不能向终端写入"
 

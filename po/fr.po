@@ -1,14 +1,14 @@
 # XZ Utils French Translation
 # This file is put in the public domain.
 # Adrien Nader <adrien@notk.org>, 2011-2014.
-# Stéphane Aulery <lkppo@free.fr>, 2019.
+# Stéphane Aulery <lkppo@free.fr>, 2019-2023.
 #
 msgid ""
 msgstr ""
-"Project-Id-Version: xz-5.2.4\n"
+"Project-Id-Version: xz-5.4.4-pre1\n"
 "Report-Msgid-Bugs-To: xz@tukaani.org\n"
-"POT-Creation-Date: 2023-10-31 22:33+0800\n"
-"PO-Revision-Date: 2019-05-12 05:46+0200\n"
+"POT-Creation-Date: 2023-07-18 23:34+0800\n"
+"PO-Revision-Date: 2023-12-19 04:12+0100\n"
 "Last-Translator: Stéphane Aulery <lkppo@free.fr>\n"
 "Language-Team: French <traduc@traduc.org>\n"
 "Language: fr\n"
@@ -49,8 +49,8 @@ msgstr "Un seul fichier peut être spécifié avec `--files' ou `--files0'."
 #. TRANSLATORS: This is a translatable
 #. string because French needs a space
 #. before the colon ("%s : %s").
-#: src/xz/args.c:533 src/xz/coder.c:692 src/xz/coder.c:708 src/xz/coder.c:968
-#: src/xz/coder.c:971 src/xz/file_io.c:605 src/xz/file_io.c:679
+#: src/xz/args.c:533 src/xz/coder.c:691 src/xz/coder.c:707 src/xz/coder.c:967
+#: src/xz/coder.c:970 src/xz/file_io.c:605 src/xz/file_io.c:679
 #: src/xz/file_io.c:769 src/xz/file_io.c:940 src/xz/list.c:369
 #: src/xz/list.c:415 src/xz/list.c:477 src/xz/list.c:581 src/xz/list.c:590
 #, fuzzy, c-format
@@ -85,66 +85,64 @@ msgstr "%s : Avec --format=raw, --suffix=.SUF est nécessaire sauf lors de l'éc
 msgid "Maximum number of filters is four"
 msgstr "Le nombre maximal de filtres est quatre"
 
-#: src/xz/coder.c:135
+#: src/xz/coder.c:134
 msgid "Memory usage limit is too low for the given filter setup."
 msgstr "La limite d'utilisation mémoire est trop basse pour la configuration de filtres donnée."
 
-#: src/xz/coder.c:170
+#: src/xz/coder.c:169
 msgid "Using a preset in raw mode is discouraged."
 msgstr "Utiliser un préréglage en mode `raw' est déconseillé."
 
-#: src/xz/coder.c:172
+#: src/xz/coder.c:171
 msgid "The exact options of the presets may vary between software versions."
 msgstr "Le détail des préréglages peut varier entre différentes versions du logiciel."
 
-#: src/xz/coder.c:195
+#: src/xz/coder.c:194
 msgid "The .lzma format supports only the LZMA1 filter"
 msgstr "Le format .lzma ne prend en charge que le filtre LZMA1"
 
-#: src/xz/coder.c:203
+#: src/xz/coder.c:202
 msgid "LZMA1 cannot be used with the .xz format"
 msgstr "Le filtre LZMA1 ne peut être utilisé avec le format .xz"
 
-#: src/xz/coder.c:220
+#: src/xz/coder.c:219
 msgid "The filter chain is incompatible with --flush-timeout"
 msgstr "La Chaine de filtre est incompatible avec --flush-timeout"
 
-#: src/xz/coder.c:226
+#: src/xz/coder.c:225
 msgid "Switching to single-threaded mode due to --flush-timeout"
 msgstr "Bascule en mode mono-processus à cause de --flush-timeout"
 
-#: src/xz/coder.c:250
+#: src/xz/coder.c:249
 #, c-format
 msgid "Using up to %<PRIu32> threads."
 msgstr "Jusqu'à %<PRIu32> threads seront utilisés."
 
-#: src/xz/coder.c:266
+#: src/xz/coder.c:265
 msgid "Unsupported filter chain or filter options"
 msgstr "Enchaînement ou options de filtres non pris en charge"
 
-#: src/xz/coder.c:278
+#: src/xz/coder.c:277
 #, c-format
 msgid "Decompression will need %s MiB of memory."
 msgstr "La décompression nécessitera %s MiB de mémoire."
 
-#: src/xz/coder.c:310
+#: src/xz/coder.c:309
 #, fuzzy, c-format
-#| msgid "Adjusted the number of threads from %s to %s to not exceed the memory usage limit of %s MiB"
 msgid "Reduced the number of threads from %s to %s to not exceed the memory usage limit of %s MiB"
 msgstr "Nombre de threads réduit de %s à %s pour ne pas dépasser la limite d'utilisation mémoire de %s MiB"
 
-#: src/xz/coder.c:330
+#: src/xz/coder.c:329
 #, c-format
 msgid "Reduced the number of threads from %s to one. The automatic memory usage limit of %s MiB is still being exceeded. %s MiB of memory is required. Continuing anyway."
 msgstr ""
 
-#: src/xz/coder.c:357
+#: src/xz/coder.c:356
 #, fuzzy, c-format
-#| msgid "Adjusted the number of threads from %s to %s to not exceed the memory usage limit of %s MiB"
 msgid "Switching to single-threaded mode to not exceed the memory usage limit of %s MiB"
 msgstr "Nombre de threads réduit de %s à %s pour ne pas dépasser la limite d'utilisation mémoire de %s MiB"
 
-#: src/xz/coder.c:412
+#: src/xz/coder.c:411
 #, c-format
 msgid "Adjusted LZMA%c dictionary size from %s MiB to %s MiB to not exceed the memory usage limit of %s MiB"
 msgstr "Taille du dictionnaire LZMA%c réduite de %s MiB à %s MiB pour ne pas dépasser la limite d'utilisation mémoire de %s MiB"
@@ -257,37 +255,37 @@ msgstr "Erreur de restauration du drapeau d'état de l'entrée standard : %s"
 msgid "Error getting the file status flags from standard output: %s"
 msgstr "Erreur de lecture du drapeau d'état du fichier depuis la sortie standard : %s"
 
-#: src/xz/file_io.c:1081
+#: src/xz/file_io.c:1060
 #, c-format
 msgid "Error restoring the O_APPEND flag to standard output: %s"
 msgstr "Impossible de rétablir le drapeau O_APPEND sur la sortie standard : %s"
 
-#: src/xz/file_io.c:1093
+#: src/xz/file_io.c:1072
 #, c-format
 msgid "%s: Closing the file failed: %s"
 msgstr "%s : Impossible de fermer le fichier : %s"
 
-#: src/xz/file_io.c:1129 src/xz/file_io.c:1391
+#: src/xz/file_io.c:1108 src/xz/file_io.c:1371
 #, c-format
 msgid "%s: Seeking failed when trying to create a sparse file: %s"
 msgstr "%s : Impossible de se déplacer dans le fichier pour créer un 'sparse file' : %s"
 
-#: src/xz/file_io.c:1229
+#: src/xz/file_io.c:1209
 #, c-format
 msgid "%s: Read error: %s"
 msgstr "%s : Erreur d'écriture : %s"
 
-#: src/xz/file_io.c:1259
+#: src/xz/file_io.c:1239
 #, c-format
 msgid "%s: Error seeking the file: %s"
 msgstr "%s : Impossible de se déplacer dans le fichier : %s"
 
-#: src/xz/file_io.c:1283
+#: src/xz/file_io.c:1263
 #, c-format
 msgid "%s: Unexpected end of file"
 msgstr "%s : Fin de fichier inattendue"
 
-#: src/xz/file_io.c:1342
+#: src/xz/file_io.c:1322
 #, c-format
 msgid "%s: Write error: %s"
 msgstr "%s : Erreur d'écriture : %s"
@@ -298,7 +296,6 @@ msgstr "Désactivé"
 
 #: src/xz/hardware.c:269
 #, fuzzy
-#| msgid "Total amount of physical memory (RAM): "
 msgid "Amount of physical memory (RAM):"
 msgstr "Quantité totale de mémoire physique (RAM) :  "
 
@@ -316,7 +313,6 @@ msgstr ""
 
 #: src/xz/hardware.c:273
 #, fuzzy
-#| msgid "Memory usage limit for decompression:  "
 msgid "Multi-threaded decompression:"
 msgstr "Limite d'utilisation pour la décompression : "
 
@@ -330,7 +326,6 @@ msgstr ""
 
 #: src/xz/hardware.c:299
 #, fuzzy
-#| msgid "Memory usage limit reached"
 msgid "Memory usage limits:"
 msgstr "Limite d'utilisation mémoire atteinte"
 
@@ -344,13 +339,11 @@ msgstr ""
 
 #: src/xz/list.c:70
 #, fuzzy
-#| msgid "  Compressed size:    %s\n"
 msgid "Compressed size:"
 msgstr "  Taille données avec compression : %s\n"
 
 #: src/xz/list.c:71
 #, fuzzy
-#| msgid "  Uncompressed size:  %s\n"
 msgid "Uncompressed size:"
 msgstr "  Taille données sans compression : %s\n"
 
@@ -364,25 +357,21 @@ msgstr ""
 
 #: src/xz/list.c:74
 #, fuzzy
-#| msgid "  Stream padding:     %s\n"
 msgid "Stream Padding:"
 msgstr "  Octets de rembourrage du flux :   %s\n"
 
 #: src/xz/list.c:75
 #, fuzzy
-#| msgid "  Memory needed:      %s MiB\n"
 msgid "Memory needed:"
 msgstr "  Mémoire nécessaire :              %s MiB\n"
 
 #: src/xz/list.c:76
 #, fuzzy
-#| msgid "  Sizes in headers:   %s\n"
 msgid "Sizes in headers:"
 msgstr "  Tailles stockées dans l'en-tête : %s\n"
 
 #: src/xz/list.c:79
 #, fuzzy
-#| msgid "  Number of files:    %s\n"
 msgid "Number of files:"
 msgstr "  Nombre de fichiers : %s\n"
 
@@ -416,7 +405,6 @@ msgstr ""
 
 #: src/xz/list.c:129
 #, fuzzy
-#| msgid "Totals:"
 msgid "TotalSize"
 msgstr "Totaux :"
 
@@ -739,11 +727,6 @@ msgstr ""
 
 #: src/xz/message.c:1007
 #, fuzzy
-#| msgid ""
-#| "  -F, --format=FMT    file format to encode or decode; possible values are\n"
-#| "                      `auto' (default), `xz', `lzma', and `raw'\n"
-#| "  -C, --check=CHECK   integrity check type: `none' (use with caution),\n"
-#| "                      `crc32', `crc64' (default), or `sha256'"
 msgid ""
 "  -F, --format=FMT    file format to encode or decode; possible values are\n"
 "                      `auto' (default), `xz', `lzma', `lzip', and `raw'\n"
@@ -818,16 +801,10 @@ msgstr ""
 "      --flush-timeout=TIMEOUT\n"
 "                      pendant la compression, si plus de TIMEOUT ms ont passées\n"
 "                      depuis le dernier flush et que la lecture est bloquée,\n"
-"                      toutes les données en attente snt écrites"
+"                      toutes les données en attente sont écrites"
 
 #: src/xz/message.c:1043
 #, fuzzy, no-c-format
-#| msgid ""
-#| "      --memlimit-compress=LIMIT\n"
-#| "      --memlimit-decompress=LIMIT\n"
-#| "  -M, --memlimit=LIMIT\n"
-#| "                      set memory usage limit for compression, decompression,\n"
-#| "                      or both; LIMIT is in bytes, % of RAM, or 0 for defaults"
 msgid ""
 "      --memlimit-compress=LIMIT\n"
 "      --memlimit-decompress=LIMIT\n"
@@ -892,16 +869,6 @@ msgstr ""
 
 #: src/xz/message.c:1082
 #, fuzzy
-#| msgid ""
-#| "\n"
-#| "  --x86[=OPTS]        x86 BCJ filter (32-bit and 64-bit)\n"
-#| "  --powerpc[=OPTS]    PowerPC BCJ filter (big endian only)\n"
-#| "  --ia64[=OPTS]       IA-64 (Itanium) BCJ filter\n"
-#| "  --arm[=OPTS]        ARM BCJ filter (little endian only)\n"
-#| "  --armthumb[=OPTS]   ARM-Thumb BCJ filter (little endian only)\n"
-#| "  --sparc[=OPTS]      SPARC BCJ filter\n"
-#| "                      Valid OPTS for all BCJ filters:\n"
-#| "                        start=NUM  start offset for conversions (default=0)"
 msgid ""
 "\n"
 "  --x86[=OPTS]        x86 BCJ filter (32-bit and 64-bit)\n"
@@ -1034,12 +1001,12 @@ msgstr "%s : Nom d'option invalide"
 msgid "%s: Invalid option value"
 msgstr "%s : Valeur d'option invalide"
 
-#: src/xz/options.c:248
+#: src/xz/options.c:247
 #, c-format
 msgid "Unsupported LZMA1/LZMA2 preset: %s"
 msgstr "Préréglage LZMA1/LZMA2 non reconnu : %s"
 
-#: src/xz/options.c:356
+#: src/xz/options.c:355
 msgid "The sum of lc and lp must not exceed 4"
 msgstr "La somme de lc et lp ne doit pas dépasser 4"
 
@@ -1058,30 +1025,30 @@ msgstr "%s : Le fichier a déjà le suffixe '%s', ignoré"
 msgid "%s: Invalid filename suffix"
 msgstr "%s: Suffixe de nom de fichier invalide"
 
-#: src/xz/util.c:107
+#: src/xz/util.c:71
 #, c-format
 msgid "%s: Value is not a non-negative decimal integer"
 msgstr "%s : La valeur n'est pas un entier décimal non négatif"
 
-#: src/xz/util.c:149
+#: src/xz/util.c:113
 #, c-format
 msgid "%s: Invalid multiplier suffix"
 msgstr "%s : Suffixe multiplicateur invalide"
 
-#: src/xz/util.c:151
+#: src/xz/util.c:115
 msgid "Valid suffixes are `KiB' (2^10), `MiB' (2^20), and `GiB' (2^30)."
 msgstr "Les suffixes valides sont 'KiB' (2^10), 'MiB' (2^20) et 'GiB' (2^30)."
 
-#: src/xz/util.c:168
+#: src/xz/util.c:132
 #, c-format
 msgid "Value of the option `%s' must be in the range [%<PRIu64>, %<PRIu64>]"
 msgstr "La valeur de l'option '%s' doit être inclue entre %<PRIu64> et %<PRIu64>"
 
-#: src/xz/util.c:270
+#: src/xz/util.c:269
 msgid "Compressed data cannot be read from a terminal"
 msgstr "Les données compressées ne peuvent pas être lues depuis un terminal"
 
-#: src/xz/util.c:283
+#: src/xz/util.c:282
 msgid "Compressed data cannot be written to a terminal"
 msgstr "Les données compressées ne peuvent pas être écrites dans un terminal"
 
@@ -1093,6 +1060,9 @@ msgstr "Impossible d'écrire vers la sortie standard"
 msgid "Unknown error"
 msgstr "Erreur inconnue"
 
+#~ msgid "The selected match finder requires at least nice=%<PRIu32>"
+#~ msgstr "Le `match finder' choisi nécessite au moins nice=%<PRIu32>"
+
 #~ msgid "Sandbox is disabled due to incompatible command line arguments"
 #~ msgstr "La sandbox est désactivée car elle est incompatible avec les arguments passés"
 
@@ -1102,19 +1072,15 @@ msgstr "Erreur inconnue"
 #~ msgid "Memory usage limit for compression:    "
 #~ msgstr "Limite d'utilisation pour la compression :   "
 
-#, c-format
 #~ msgid "  Streams:            %s\n"
 #~ msgstr "  Flux :                            %s\n"
 
-#, c-format
 #~ msgid "  Blocks:             %s\n"
 #~ msgstr "  Blocs :                           %s\n"
 
-#, c-format
 #~ msgid "  Ratio:              %s\n"
 #~ msgstr "  Ratio :                           %s\n"
 
-#, c-format
 #~ msgid "  Check:              %s\n"
 #~ msgstr "  Vérification :                    %s\n"
 
@@ -1125,7 +1091,6 @@ msgstr "Erreur inconnue"
 #~ "  Flux :\n"
 #~ "      Flux     Blocs    PositionComp  PositionDécomp      TailleComp    TailleDécomp  Ratio  Vérif.    Bourrage"
 
-#, c-format
 #~ msgid ""
 #~ "  Blocks:\n"
 #~ "    Stream     Block      CompOffset    UncompOffset       TotalSize      UncompSize  Ratio  Check"
@@ -1133,13 +1098,8 @@ msgstr "Erreur inconnue"
 #~ "  Blocs :\n"
 #~ "      Flux      Bloc    PositionComp  PositionDécomp       TailleTot    TailleDécomp  Ratio  Vérif."
 
-#, c-format
 #~ msgid "      CheckVal %*s Header  Flags        CompSize    MemUsage  Filters"
 #~ msgstr "     ValVérif %*sEn-tête  Drapeaux   TailleComp     UtilMém  Filtres"
-
-#, c-format
-#~ msgid "The selected match finder requires at least nice=%<PRIu32>"
-#~ msgstr "Le `match finder' choisi nécessite au moins nice=%<PRIu32>"
 
 #~ msgid "Error setting O_NONBLOCK on standard input: %s"
 #~ msgstr "Impossible d'établir le drapeau O_NONBLOCK sur la sortie standard : %s"
