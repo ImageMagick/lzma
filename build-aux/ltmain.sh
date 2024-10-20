@@ -2,7 +2,7 @@
 ## DO NOT EDIT - This file generated from ./build-aux/ltmain.in
 ##               by inline-source v2019-02-19.15
 
-# libtool (GNU libtool) 2.5.0.1-38c1-dirty
+# libtool (GNU libtool) 2.5.3-dirty
 # Provide generalized library-building support services.
 # Written by Gordon Matzigkeit <gord@gnu.ai.mit.edu>, 1996
 
@@ -31,8 +31,8 @@
 
 PROGRAM=libtool
 PACKAGE=libtool
-VERSION=2.5.0.1-38c1-dirty
-package_revision=2.5.0.1
+VERSION=2.5.3-dirty
+package_revision=2.5.3
 
 
 ## ------ ##
@@ -72,7 +72,7 @@ scriptversion=2019-02-19.15; # UTC
 # This is free software.  There is NO warranty; not even for
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-# Copyright (C) 2004-2019, 2021, 2023 Bootstrap Authors
+# Copyright (C) 2004-2019, 2021, 2023-2024 Bootstrap Authors
 #
 # This file is dual licensed under the terms of the MIT license
 # <https://opensource.org/licenses/MIT>, and GPL version 2 or later
@@ -1536,7 +1536,7 @@ func_lt_ver ()
 # This is free software.  There is NO warranty; not even for
 # MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 #
-# Copyright (C) 2010-2019, 2021, 2023 Bootstrap Authors
+# Copyright (C) 2010-2019, 2021, 2023-2024 Bootstrap Authors
 #
 # This file is dual licensed under the terms of the MIT license
 # <https://opensource.org/licenses/MIT>, and GPL version 2 or later
@@ -2215,7 +2215,7 @@ func_version ()
 # End:
 
 # Set a version string.
-scriptversion='(GNU libtool) 2.5.0.1-38c1-dirty'
+scriptversion='(GNU libtool) 2.5.3-dirty'
 
 
 # func_echo ARG...
@@ -2306,7 +2306,7 @@ include the following information:
        compiler:       $LTCC
        compiler flags: $LTCFLAGS
        linker:         $LD (gnu? $with_gnu_ld)
-       version:        $progname (GNU libtool) 2.5.0.1-38c1-dirty
+       version:        $progname (GNU libtool) 2.5.3-dirty
        automake:       `($AUTOMAKE --version) 2>/dev/null |$SED 1q`
        autoconf:       `($AUTOCONF --version) 2>/dev/null |$SED 1q`
 
@@ -4963,8 +4963,16 @@ extern \"C\" {
 	            eval '$ECHO ": $name " >> "$nlist"'
 	          fi
 	          func_to_tool_file "$dlprefile" func_convert_file_msys_to_w32
-	          eval "$NM \"$func_to_tool_file_result\" 2>/dev/null | $global_symbol_pipe |
-	            $SED -e '/I __imp/d' -e 's/I __nm_/D /;s/_nm__//' >> '$nlist'"
+	          case $host in
+	            i[3456]86-*-mingw32*)
+	              eval "$NM \"$func_to_tool_file_result\" 2>/dev/null | $global_symbol_pipe |
+	                $SED -e '/I __imp/d' -e 's/I __nm_/D /;s/_nm__//' >> '$nlist'"
+	            ;;
+	            *)
+	              eval "$NM \"$func_to_tool_file_result\" 2>/dev/null | $global_symbol_pipe |
+	                $SED -e '/I __imp/d' -e 's/I __nm_/D /;s/__nm_//' >> '$nlist'"
+	            ;;
+	          esac
 	        }
 	      else # not an import lib
 	        $opt_dry_run || {
@@ -5188,7 +5196,7 @@ func_win32_libid ()
   *ar\ archive*) # could be an import, or static
     # Keep the egrep pattern in sync with the one in _LT_CHECK_MAGIC_METHOD.
     if eval $OBJDUMP -f $1 | $SED -e '10q' 2>/dev/null |
-       $EGREP 'file format (pei*-i386(.*architecture: i386)?|pe-arm-wince|pe-x86-64)' >/dev/null; then
+       $EGREP 'file format (pei*-i386(.*architecture: i386)?|pe-arm-wince|pe-x86-64|pe-aarch64)' >/dev/null; then
       case $nm_interface in
       "MS dumpbin")
 	if func_cygming_ms_implib_p "$1" ||
@@ -6814,10 +6822,12 @@ func_mode_link ()
     xrpath=
     perm_rpath=
     temp_rpath=
+    temp_rpath_tail=
     thread_safe=no
     vinfo=
     vinfo_number=no
     weak_libs=
+    rpath_arg=
     single_module=$wl-single_module
     func_infer_tag $base_compile
 
@@ -7080,7 +7090,7 @@ func_mode_link ()
 	  case $arg in
 	  [\\/]* | [A-Za-z]:[\\/]*) ;;
 	  *)
-	    func_fatal_error "only absolute run-paths are allowed"
+	    func_fatal_error "argument to -rpath is not absolute: $arg"
 	    ;;
 	  esac
 	  if test rpath = "$prev"; then
@@ -7431,7 +7441,7 @@ func_mode_link ()
 	  dir=$lt_sysroot$func_stripname_result
 	  ;;
 	*)
-	  func_fatal_error "only absolute run-paths are allowed"
+	  func_fatal_error "argument ($arg) to '-R' is not an absolute path: $dir"
 	  ;;
 	esac
 	case "$xrpath " in
@@ -7564,6 +7574,8 @@ func_mode_link ()
       # -static-libsan       Link with static sanitizer runtimes (Clang)
       # -no-canonical-prefixes Do not expand any symbolic links
       # -fuse-ld=*           Linker select flags for GCC
+      # -static-*            direct GCC to link specific libraries statically
+      # -fcilkplus           Cilk Plus language extension features for C/C++
       # -rtlib=*             select c runtime lib with clang
       # --unwindlib=*        select unwinder library with clang
       # -f{file|debug|macro|profile}-prefix-map=* needed for lto linking
@@ -7576,7 +7588,7 @@ func_mode_link ()
       -specs=*|-fsanitize=*|-fno-sanitize*|-shared-libsan|-static-libsan| \
       -ffile-prefix-map=*|-fdebug-prefix-map=*|-fmacro-prefix-map=*|-fprofile-prefix-map=*| \
       -fdiagnostics-color*|-frecord-gcc-switches| \
-      -fuse-ld=*|-Wa,*|-Werror|-Werror=*)
+      -fuse-ld=*|-static-*|-fcilkplus|-Wa,*|-Werror|-Werror=*)
         func_quote_arg pretty "$arg"
 	arg=$func_quote_arg_result
         func_append compile_command " $arg"
@@ -7734,8 +7746,20 @@ func_mode_link ()
 
       # Now actually substitute the argument into the commands.
       if test -n "$arg"; then
-	func_append compile_command " $arg"
-	func_append finalize_command " $arg"
+	if test -n "$rpath_arg"; then
+          func_append finalize_rpath " ${arg##*,}"
+	  unset rpath_arg
+	else
+	  case $arg in
+          -Wl,-rpath,*)
+	    func_append finalize_rpath " ${arg##*,}";;
+          -Wl,-rpath)
+	    rpath_arg=1;;
+          *)
+            func_append compile_command " $arg"
+	    func_append finalize_command " $arg"
+	  esac
+        fi
       fi
     done # argument parsing loop
 
@@ -8386,7 +8410,10 @@ func_mode_link ()
 	      # Make sure the rpath contains only unique directories.
 	      case $temp_rpath: in
 	      *"$absdir:"*) ;;
-	      *) func_append temp_rpath "$absdir:" ;;
+              *) case $absdir in
+                 "$progdir/"*) func_append temp_rpath "$absdir:" ;;
+                 *)            func_append temp_rpath_tail "$absdir:" ;;
+                 esac
 	      esac
 	    fi
 
@@ -8398,7 +8425,9 @@ func_mode_link ()
 	    *)
 	      case "$compile_rpath " in
 	      *" $absdir "*) ;;
-	      *) func_append compile_rpath " $absdir" ;;
+	      *) case $absdir in
+                 "$progdir/"*) func_append compile_rpath " $absdir" ;;
+		 esac
 	      esac
 	      ;;
 	    esac
@@ -8472,7 +8501,9 @@ func_mode_link ()
 	    *)
 	      case "$compile_rpath " in
 	      *" $absdir "*) ;;
-	      *) func_append compile_rpath " $absdir" ;;
+	      *) case $absdir in
+                 "$progdir/"*) func_append compile_rpath " $absdir" ;;
+		 esac
 	      esac
 	      ;;
 	    esac
@@ -8641,7 +8672,7 @@ func_mode_link ()
 	       test no = "$hardcode_direct_absolute"; then
 	      add=$libdir/$linklib
 	    elif test yes = "$hardcode_minus_L"; then
-	      add_dir=-L$libdir
+	      add_dir=-L$lt_sysroot$libdir
 	      add=-l$name
 	    elif test yes = "$hardcode_shlibpath_var"; then
 	      case :$finalize_shlibpath: in
@@ -8658,7 +8689,7 @@ func_mode_link ()
 	      fi
 	    else
 	      # We cannot seem to hardcode it, guess we'll fake it.
-	      add_dir=-L$libdir
+	      add_dir=-L$lt_sysroot$libdir
 	      # Try looking first in the location we're being installed to.
 	      if test -n "$inst_prefix_dir"; then
 		case $libdir in
@@ -8833,6 +8864,8 @@ func_mode_link ()
 	  fi # link_all_deplibs != no
 	fi # linkmode = lib
       done # for deplib in $libs
+
+      func_append temp_rpath "$temp_rpath_tail"
       if test link = "$pass"; then
 	if test prog = "$linkmode"; then
 	  compile_deplibs="$new_inherited_linker_flags $compile_deplibs"
@@ -8870,42 +8903,46 @@ func_mode_link ()
 	  # Add libraries to $var in reverse order
 	  eval tmp_libs=\"\$$var\"
 	  new_libs=
+	  # FIXME: Pedantically, this is the right thing to do, so
+	  #        that some nasty dependency loop isn't accidentally
+	  #        broken: new_libs="$deplib $new_libs"
 	  for deplib in $tmp_libs; do
-	    # FIXME: Pedantically, this is the right thing to do, so
-	    #        that some nasty dependency loop isn't accidentally
-	    #        broken:
-	    #new_libs="$deplib $new_libs"
-	    # Pragmatically, this seems to cause very few problems in
-	    # practice:
-	    case $deplib in
-	    -L*) new_libs="$deplib $new_libs" ;;
-	    -R*) ;;
-	    *)
-	      # And here is the reason: when a library appears more
-	      # than once as an explicit dependence of a library, or
-	      # is implicitly linked in more than once by the
-	      # compiler, it is considered special, and multiple
-	      # occurrences thereof are not removed.  Compare this
-	      # with having the same library being listed as a
-	      # dependency of multiple other libraries: in this case,
-	      # we know (pedantically, we assume) the library does not
-	      # need to be listed more than once, so we keep only the
-	      # last copy.  This is not always right, but it is rare
-	      # enough that we require users that really mean to play
-	      # such unportable linking tricks to link the library
-	      # using -Wl,-lname, so that libtool does not consider it
-	      # for duplicate removal.
-	      case " $specialdeplibs " in
-	      *" $deplib "*) new_libs="$deplib $new_libs" ;;
+	    if $opt_preserve_dup_deps; then
+	      new_libs="$deplib $new_libs"
+	    else
+	      # Pragmatically, this seems to cause very few problems in
+	      # practice:
+	      case $deplib in
+	      -L*) new_libs="$deplib $new_libs" ;;
+	      -R*) ;;
 	      *)
-		case " $new_libs " in
-		*" $deplib "*) ;;
-		*) new_libs="$deplib $new_libs" ;;
-		esac
-		;;
+	        # And here is the reason: when a library appears more
+	        # than once as an explicit dependence of a library, or
+	        # is implicitly linked in more than once by the
+	        # compiler, it is considered special, and multiple
+	        # occurrences thereof are not removed.  Compare this
+	        # with having the same library being listed as a
+	        # dependency of multiple other libraries: in this case,
+	        # we know (pedantically, we assume) the library does not
+	        # need to be listed more than once, so we keep only the
+	        # last copy.  This is not always right, but it is rare
+	        # enough that we require users that really mean to play
+	        # such unportable linking tricks to link the library
+	        # using -Wl,-lname, so that libtool does not consider it
+	        # for duplicate removal.  And if not possible for portability
+	        # reasons, then --preserve-dup-deps should be used.
+	        case " $specialdeplibs " in
+	        *" $deplib "*) new_libs="$deplib $new_libs" ;;
+	        *)
+	          case " $new_libs " in
+	          *" $deplib "*) ;;
+	          *) new_libs="$deplib $new_libs" ;;
+	          esac
+	          ;;
+	        esac
+	        ;;
 	      esac
-	      ;;
-	    esac
+	    fi
 	  done
 	  tmp_libs=
 	  for deplib in $new_libs; do

@@ -8,8 +8,8 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xz-man 5.6.2\n"
-"POT-Creation-Date: 2024-05-29 18:17+0300\n"
+"Project-Id-Version: xz-man 5.6.3\n"
+"POT-Creation-Date: 2024-10-01 19:35+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
