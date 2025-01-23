@@ -14,7 +14,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH XZ 1 2024\-04\-08 Tukaani "Utilitaires XZ"
+.TH XZ 1 2024\-12\-30 Tukaani "Utilitaires XZ"
 .
 .SH NOM
 xz, unxz, xzcat, lzma, unlzma, lzcat \- Compresser ou décompresser des
@@ -189,9 +189,19 @@ Compresser. C'est le mode d'opération par défaut lorsque aucune option de
 mode opératoire n'est spécifiée ou qu'aucun autre mode d'opération n'est
 sous\-entendu par le nom de la commande (par exemple \fBunxz\fP sous\-entend
 \fB\-\-decompress\fP).
+.IP ""
+.\" The DESCRIPTION section already says this but it's good to repeat it
+.\" here because the default behavior is a bit dangerous and new users
+.\" in a hurry may skip reading the DESCRIPTION section.
+After successful compression, the source file is removed unless writing to
+standard output or \fB\-\-keep\fP was specified.
 .TP 
 \fB\-d\fP, \fB\-\-decompress\fP, \fB\-\-uncompress\fP
-Décompresser.
+.\" The DESCRIPTION section already says this but it's good to repeat it
+.\" here because the default behavior is a bit dangerous and new users
+.\" in a hurry may skip reading the DESCRIPTION section.
+Decompress.  After successful decompression, the source file is removed
+unless writing to standard output or \fB\-\-keep\fP was specified.
 .TP 
 \fB\-t\fP, \fB\-\-test\fP
 Tester l'intégrité des \fIfichiers\fP compressés. Cette option est équivalente

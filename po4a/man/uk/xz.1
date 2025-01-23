@@ -12,7 +12,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH XZ 1 2024\-04\-08 Tukaani "XZ Utils"
+.TH XZ 1 2024\-12\-30 Tukaani "XZ Utils"
 .
 .SH НАЗВА
 xz, unxz, xzcat, lzma, unlzma, lzcat — стискання та розпаковування файлів
@@ -185,9 +185,19 @@ xz, unxz, xzcat, lzma, unlzma, lzcat — стискання та розпако�
 Стиснути. Це типовий режим дій, якщо не вказано параметр режиму дій, а назва
 команди неявним чином не визначає іншого режиму дій (наприклад, \fBunxz\fP
 неявно визначає \fB\-\-decompress\fP).
+.IP ""
+.\" The DESCRIPTION section already says this but it's good to repeat it
+.\" here because the default behavior is a bit dangerous and new users
+.\" in a hurry may skip reading the DESCRIPTION section.
+After successful compression, the source file is removed unless writing to
+standard output or \fB\-\-keep\fP was specified.
 .TP 
 \fB\-d\fP, \fB\-\-decompress\fP, \fB\-\-uncompress\fP
-Розпакувати.
+.\" The DESCRIPTION section already says this but it's good to repeat it
+.\" here because the default behavior is a bit dangerous and new users
+.\" in a hurry may skip reading the DESCRIPTION section.
+Decompress.  After successful decompression, the source file is removed
+unless writing to standard output or \fB\-\-keep\fP was specified.
 .TP 
 \fB\-t\fP, \fB\-\-test\fP
 Перевірити цілісність стиснених файлів \fIфайли\fP. Цей параметр еквівалентний

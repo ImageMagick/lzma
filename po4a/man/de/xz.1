@@ -12,7 +12,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH XZ 1 2024\-04\-08 Tukaani XZ\-Dienstprogramme
+.TH XZ 1 2024\-12\-30 Tukaani XZ\-Dienstprogramme
 .
 .SH BEZEICHNUNG
 xz, unxz, xzcat, lzma, unlzma, lzcat \- .xz\- und .lzma\-Dateien komprimieren
@@ -196,9 +196,19 @@ verwendet.
 Kompression. Dies ist der voreingestellte Aktionsmodus, sofern keiner
 angegeben ist und auch kein bestimmter Modus aus dem Befehlsnamen abgeleitet
 werden kann (der Befehl \fBunxz\fP impliziert zum Beispiel \fB\-\-decompress\fP).
+.IP ""
+.\" The DESCRIPTION section already says this but it's good to repeat it
+.\" here because the default behavior is a bit dangerous and new users
+.\" in a hurry may skip reading the DESCRIPTION section.
+After successful compression, the source file is removed unless writing to
+standard output or \fB\-\-keep\fP was specified.
 .TP 
 \fB\-d\fP, \fB\-\-decompress\fP, \fB\-\-uncompress\fP
-dekomprimpiert.
+.\" The DESCRIPTION section already says this but it's good to repeat it
+.\" here because the default behavior is a bit dangerous and new users
+.\" in a hurry may skip reading the DESCRIPTION section.
+Decompress.  After successful decompression, the source file is removed
+unless writing to standard output or \fB\-\-keep\fP was specified.
 .TP 
 \fB\-t\fP, \fB\-\-test\fP
 prüft die Integrität der komprimierten \fIDateien\fP. Diese Option ist

@@ -12,7 +12,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH XZ 1 2024\-04\-08 Tukaani "XZ 유틸리티"
+.TH XZ 1 2024\-12\-30 Tukaani "XZ 유틸리티"
 .
 .SH 이름
 xz, unxz, xzcat, lzma, unlzma, lzcat \- .xz 파일과 .lzma 파일을 압축 또는 압축 해제합니다
@@ -137,9 +137,19 @@ xz, unxz, xzcat, lzma, unlzma, lzcat \- .xz 파일과 .lzma 파일을 압축 또
 \fB\-z\fP, \fB\-\-compress\fP
 압축합니다.  어떤 동작 모드 옵션도 지정하지 않고 다른 동작 모드를 명령행에 따로 지정하지 않았다면 이 동작 모드는 기본입니다(예:
 \fBunxz\fP 는 \fB\-\-decompress\fP를 암시).
+.IP ""
+.\" The DESCRIPTION section already says this but it's good to repeat it
+.\" here because the default behavior is a bit dangerous and new users
+.\" in a hurry may skip reading the DESCRIPTION section.
+After successful compression, the source file is removed unless writing to
+standard output or \fB\-\-keep\fP was specified.
 .TP 
 \fB\-d\fP, \fB\-\-decompress\fP, \fB\-\-uncompress\fP
-압축을 해제합니다.
+.\" The DESCRIPTION section already says this but it's good to repeat it
+.\" here because the default behavior is a bit dangerous and new users
+.\" in a hurry may skip reading the DESCRIPTION section.
+Decompress.  After successful decompression, the source file is removed
+unless writing to standard output or \fB\-\-keep\fP was specified.
 .TP 
 \fB\-t\fP, \fB\-\-test\fP
 압축 \fI<파일>\fP의 무결성을 시험해봅니다.  이 옵션은 압축 해제 데이터를 표준 출력으로 기록하는 대신 버린다는 점을

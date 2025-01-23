@@ -8,8 +8,8 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: xz-man 5.6.3\n"
-"POT-Creation-Date: 2024-10-01 19:35+0300\n"
+"Project-Id-Version: xz-man 5.6.4\n"
+"POT-Creation-Date: 2025-01-23 11:59+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -25,9 +25,9 @@ msgid "XZ"
 msgstr ""
 
 #. type: TH
-#: ../src/xz/xz.1 ../src/xzdec/xzdec.1
+#: ../src/xz/xz.1
 #, no-wrap
-msgid "2024-04-08"
+msgid "2024-12-30"
 msgstr ""
 
 #. type: TH
@@ -321,15 +321,26 @@ msgstr ""
 msgid "Compress.  This is the default operation mode when no operation mode option is specified and no other operation mode is implied from the command name (for example, B<unxz> implies B<--decompress>)."
 msgstr ""
 
+#.  The DESCRIPTION section already says this but it's good to repeat it
+#.  here because the default behavior is a bit dangerous and new users
+#.  in a hurry may skip reading the DESCRIPTION section.
+#. type: Plain text
+#: ../src/xz/xz.1
+msgid "After successful compression, the source file is removed unless writing to standard output or B<--keep> was specified."
+msgstr ""
+
 #. type: TP
 #: ../src/xz/xz.1 ../src/xzdec/xzdec.1
 #, no-wrap
 msgid "B<-d>, B<--decompress>, B<--uncompress>"
 msgstr ""
 
+#.  The DESCRIPTION section already says this but it's good to repeat it
+#.  here because the default behavior is a bit dangerous and new users
+#.  in a hurry may skip reading the DESCRIPTION section.
 #. type: Plain text
 #: ../src/xz/xz.1
-msgid "Decompress."
+msgid "Decompress.  After successful decompression, the source file is removed unless writing to standard output or B<--keep> was specified."
 msgstr ""
 
 #. type: TP
@@ -3355,6 +3366,12 @@ msgstr ""
 #: ../src/xzdec/xzdec.1
 #, no-wrap
 msgid "XZDEC"
+msgstr ""
+
+#. type: TH
+#: ../src/xzdec/xzdec.1
+#, no-wrap
+msgid "2024-04-08"
 msgstr ""
 
 #. type: Plain text

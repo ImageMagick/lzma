@@ -1,3 +1,665 @@
+commit ac50df0d89ce73f30430b8174e578071cbb4e056
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-23 11:45:07 +0200
+
+    Bump version and soname for 5.6.4
+
+ src/liblzma/Makefile.am        | 2 +-
+ src/liblzma/api/lzma/version.h | 2 +-
+ 2 files changed, 2 insertions(+), 2 deletions(-)
+
+commit 83ce1d42aecb280eae9212caf484ce869488dbfe
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-23 11:40:46 +0200
+
+    Add NEWS for 5.6.4
+
+ NEWS | 45 +++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 45 insertions(+)
+
+commit 608dec5bc6c76f5a19174a9a5789b68bd78777ae
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-23 11:40:46 +0200
+
+    NEWS: The security fix in 5.6.3 is known as CVE-2024-47611
+    
+    (cherry picked from commit b3af3297e4d6cf0eafb48155aa97bb06c82a9228)
+
+ NEWS | 4 +++-
+ 1 file changed, 3 insertions(+), 1 deletion(-)
+
+commit 92950088374b20a9d0a4970db1f31b1950167cd9
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-23 11:24:33 +0200
+
+    Translations: Run po4a/update-po
+
+ po4a/de.po    | 35 ++++++++++++++++++++++++++++-------
+ po4a/fr.po    | 30 +++++++++++++++++++++++++-----
+ po4a/ko.po    | 35 ++++++++++++++++++++++++++++-------
+ po4a/pt_BR.po | 30 +++++++++++++++++++++++++-----
+ po4a/ro.po    | 35 ++++++++++++++++++++++++++++-------
+ po4a/uk.po    | 35 ++++++++++++++++++++++++++++-------
+ 6 files changed, 162 insertions(+), 38 deletions(-)
+
+commit 990c769a5ee1d2c3ba20879e350c3b69bb65d2bf
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-22 16:55:09 +0200
+
+    windows/build.bash: Fix error message
+    
+    Fixes: 1ee716f74085223c8fbcae1d5a384e6bf53c0f6a
+    (cherry picked from commit a04b9dd0c7c74fabd8c393d2dc68a221276d6e29)
+
+ windows/build.bash | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 5ae7958dbcb194a3df745e4860f7fa902593c095
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-22 15:03:55 +0200
+
+    Windows: Disable MinGW-w64's stdio functions in size-optimized builds
+    
+    This only affects builds with UCRT. With legacy MSVCRT, the replacement
+    functions are always enabled.
+    
+    Omitting the MinGW-w64 replacements saves over 20 KiB per executable.
+    The downside is that --enable-small or XZ_SMALL=ON disables thousand
+    separator support in xz messages. If someone is OK with the slower
+    speed of slightly smaller builds, lack of thousand separators won't
+    matter.
+    
+    Don't override __USE_MINGW_ANSI_STDIO if it is already defined (via
+    CPPFLAGS or such method).
+    
+    (cherry picked from commit 4eae859ae8ad7072eaa74aeaee79a2c3c12c55cb)
+
+ src/common/sysdefs.h | 30 +++++++++++++++++++++---------
+ src/xz/util.c        |  6 +++++-
+ 2 files changed, 26 insertions(+), 10 deletions(-)
+
+commit c182b9c1b398582b40ee3f8db36f32a4bf5cfe20
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-19 20:11:54 +0200
+
+    Update THANKS
+    
+    (cherry picked from commit da359c360e986b21cd8d7b888c6a80f56b9d49c7)
+
+ THANKS | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 82df6518582be7f17990c02a145d144799c5d630
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-19 19:40:32 +0200
+
+    Update THANKS
+    
+    (cherry picked from commit f032373561cefaf07f92ffe3fbc471ec6770456e)
+
+ THANKS | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 717bee1ec512d0e5762fee221df133c81cb9f7c4
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-08 19:26:29 +0200
+
+    Build: Use --sort=name in TAR_OPTIONS
+    
+    Use also LC_COLLATE=C to make the sorting locale-independent.
+    Sorting makes the file order reproducible.
+    
+    (cherry picked from commit 950da11ce09c90412dcbca29689575037640667a)
+
+ Makefile.am | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+commit 27a503b8dd14851d00b04b9ca74b96d77347525e
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-12 13:06:17 +0200
+
+    Update THANKS
+    
+    (cherry picked from commit 96336b0110d47756a9fd2a103fbf0a99e905fbed)
+
+ THANKS | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit f4d988bc045644788a47d8352fb26a28f4d269d5
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-12 12:59:20 +0200
+
+    liblzma: Fix the encoder breakage on big endian ARM64
+    
+    When the 8-byte method was enabled for ARM64, a check for endianness
+    wasn't added. This broke the LZMA/LZMA2 encoder. Test suite caught it.
+    
+    Fixes: cd64dd70d5665b6048829c45772d08606f44672e
+    Co-authored-by: Marcus Comstedt <marcus@mc.pp.se>
+    (cherry picked from commit 150356207c8d6a3e0af465b676430d19d62f884c)
+
+ src/liblzma/common/memcmplen.h | 9 +++++++--
+ 1 file changed, 7 insertions(+), 2 deletions(-)
+
+commit e22c4fb2593760bbd60783e4e3f15bb4a303956f
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-12 11:04:27 +0200
+
+    Windows: Update manifest comments about long UTF-8 filenames
+    
+    (cherry picked from commit b01b0958025a2da284b53a583f313f8140636cb5)
+
+ src/common/w32_application.manifest.comments.txt | 23 +++++++++++++++--------
+ 1 file changed, 15 insertions(+), 8 deletions(-)
+
+commit 5e77f8a9ef970ca7e3ecb3d23be6e5b866fb9aef
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-12 10:47:58 +0200
+
+    Windows: Update build.bash and its README-Windows.txt to UCRT
+    
+    While MSVCRT builds are possible, UCRT works better with UTF-8.
+    A 32-bit build is included still but hopefully it's not actually
+    needed anymore.
+    
+    (cherry picked from commit 0dfc67d37ebb038be8a9b17b536d1b561d52e81a)
+
+ windows/README-Windows.txt | 17 ++++++++---------
+ windows/build.bash         | 20 ++++++++++++++------
+ 2 files changed, 22 insertions(+), 15 deletions(-)
+
+commit 2133ff98396b991928c7052db0ae44585c1c8516
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-10 13:11:40 +0200
+
+    Translations: Update Serbian translation
+    
+    I rewrapped a few overlong lines. Those edits aren't in the
+    Translation Project. Automatic wrapping in the master branch
+    means that these strings need to be updated soon anyway.
+
+ po/sr.po | 346 ++++++++++++++++++++++-----------------------------------------
+ 1 file changed, 121 insertions(+), 225 deletions(-)
+
+commit 8eaf2cb58e56e6ae19e9c4542d23a33f4d7636ec
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-05 12:10:05 +0200
+
+    liblzma: Always validate the first digit of a preset string
+    
+    lzma_str_to_filters() may call parse_lzma12_preset() in two ways. The
+    call from str_to_filters() detects the string type from the first
+    character(s) and as a side-effect it validates the first digit of
+    the preset string. So this change makes no difference there.
+    
+    However, the call from parse_options() doesn't pre-validate the string.
+    parse_lzma12_preset() will return an invalid value which is passed to
+    lzma_lzma_preset() which safely rejects it. The bug still affects the
+    the error message:
+    
+        $ xz --filters=lzma2:preset=X
+        xz: Error in --filters=FILTERS option:
+        xz: lzma2:preset=X
+        xz:               ^
+        xz: Unsupported preset
+    
+    After the fix:
+    
+        $ xz --filters=lzma2:preset=X
+        xz: Error in --filters=FILTERS option:
+        xz: lzma2:preset=X
+        xz:              ^
+        xz: Unsupported preset
+    
+    The ^ now correctly points to the X and not past it because the X itself
+    is the problematic character.
+    
+    Fixes: cedeeca2ea6ada5b0411b2ae10d7a859e837f203
+    (cherry picked from commit 75107217670a97b7b772833669d88c3c2f188e37)
+
+ src/liblzma/common/string_conversion.c | 4 ++++
+ 1 file changed, 4 insertions(+)
+
+commit 9b5a5c39f43b7f949930f3b14d80285305f5aa16
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-05 11:40:34 +0200
+
+    xz: Fix getopt_long argument type in --filters*
+    
+    Forgetting the argument (or not using = to separate the option from
+    the argument) resulted in lzma_str_to_filters() being called with NULL
+    as input string argument. The function handles it fine but xz passes
+    the NULL to printf() too:
+    
+        $ xz --filters
+        xz: Error in --filters=FILTERS option:
+        xz: (null)
+        xz: ^
+        xz: Unexpected NULL pointer argument(s) to lzma_str_to_filters()
+    
+    Now it's correct:
+    
+        $ xz --filters
+        xz: option '--filters' requires an argument
+    
+    The --filters-help option doesn't take any arguments.
+    
+    Fixes: 9ded880a0221f4d1256845fc4ab957ffd377c760
+    Fixes: d6af7f347077b22403133239592e478931307759
+    Fixes: a165d7df1964121eb9df715e6f836a31c865beef
+    (cherry picked from commit 52ff32433734d03befd85a5bf00fba77d6501455)
+
+ src/xz/args.c | 22 +++++++++++-----------
+ 1 file changed, 11 insertions(+), 11 deletions(-)
+
+commit 4ddf32c92b76f32559096910afcf7528591302aa
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-04 20:04:56 +0200
+
+    xzdec: Don't leave Landlock file descriptor open for no reason
+    
+    This fix is similar to 48ff3f06521ca326996ab9a04d1b342098960427.
+    
+    Fixes: d74fb5f060b76db709b50f5fd37490394e52f975
+    (cherry picked from commit 2655c81b5e92278b0fd51f6537c1116f8349b02a)
+
+ src/xzdec/xzdec.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+commit 1a5b93ed5712d37c1766a6cd48a8c8bf1283496a
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-01 18:46:50 +0200
+
+    liblzma: Silence warnings from "clang -Wimplicit-fallthrough"
+    
+    (cherry picked from commit 672da29bb3a209a727ae46c0df948d7eea69f2e2)
+
+ src/liblzma/lzma/lzma_decoder.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 33899ee86decc2cb3cbd853ac324df4e28a11046
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-01 15:06:15 +0200
+
+    xzdec: Fix language in a comment
+    
+    (cherry picked from commit e34dbd6a0ae7a560a5508d51fc0bd142c5a320dc)
+
+ src/xzdec/xzdec.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 5a208b0c92fb0f2143772583a835e5b8d2e52edd
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2025-01-02 13:35:48 +0200
+
+    Windows: Make NLS require UCRT and gettext-runtime >= 0.23.1
+    
+    Also remove the recently-added workaround from tuklib_gettext.h.
+    Requiring a new enough gettext-runtime is cleaner. I guess it's
+    mostly MSYS2 where xz is built with translation support, so once
+    MSYS2 has Gettext >= 0.23.1, this requirement shouldn't be a problem
+    in practice.
+    
+    (cherry picked from commit 16821252c504071f5c2012e415e59cbf5fb79820)
+
+ CMakeLists.txt              | 29 ++++++++++++++++++++++++++
+ configure.ac                | 29 ++++++++++++++++++++++++++
+ src/common/tuklib_gettext.h | 51 ---------------------------------------------
+ 3 files changed, 58 insertions(+), 51 deletions(-)
+
+commit b8081fdbc5c2e06e0b2c23f27982cb1730eb7eb7
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2024-12-30 11:21:57 +0200
+
+    Build: Use git log --pretty=medium when creating ChangeLog
+    
+    It's the default in git-log. Specifying it explicitly is good in case
+    a user has set format.pretty to a different value.
+    
+    (cherry picked from commit ea21c76aa2406ba06ac154fe57741734c04f260f)
+
+ Makefile.am | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+
+commit 27c63200ee2e8c15fcc354d776e615781c5f3120
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2024-12-30 10:51:33 +0200
+
+    Windows: Update MinGW-w64 + CMake instructions to recommend UCRT
+    
+    (cherry picked from commit 08050c0788ce5bac0ffd572e9784a2749c4a13df)
+
+ windows/INSTALL-MinGW-w64_with_CMake.txt | 38 +++++++++++++++++++-------------
+ 1 file changed, 23 insertions(+), 15 deletions(-)
+
+commit 89db6aacbf8b62289797d1b67e4b76ff178f311f
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2024-12-30 10:51:26 +0200
+
+    xz man page: Describe the source file deletion in -z and -d options
+    
+    The DESCRIPTION section always explained it, and the OPTIONS section
+    only described the differences to the default behavior. However, new
+    users in a hurry may skip reading DESCRIPTION. The default behavior
+    is a bit dangerous, thus it's good to repeat in --compress and
+    --decompress docs that source file is removed after successful operation.
+    
+    Fixes: https://github.com/tukaani-project/xz/issues/150
+    (cherry picked from commit 653732bd6f06d8f465bf353bf6e1c16f1405b906)
+
+ src/xz/xz.1 | 17 ++++++++++++++++-
+ 1 file changed, 16 insertions(+), 1 deletion(-)
+
+commit 3324ea3576d6e3b2c53854ad7b313aeb6dc86e69
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2024-12-26 21:27:18 +0200
+
+    xz: Fix comments
+    
+    (cherry picked from commit 260d5d36203955a7148ae1ab05d0931c942028d5)
+
+ src/xz/file_io.c | 4 ++--
+ src/xz/file_io.h | 4 ++--
+ 2 files changed, 4 insertions(+), 4 deletions(-)
+
+commit 50b8d61030e08a71f61d172d7d830d1eaae92bb5
+Author: Dexter Castor Döpping <dexter.c.dopping@gmail.com>
+Date:   2024-12-22 13:44:03 +0100
+
+    CMake: Disable unity builds project-wide
+    
+    liblzma and xz can't be compiled as a unity/jumbo build because of
+    redeclarations and type name reuse. The CMake documentation recommends
+    setting UNITY_BUILD to false in this case.
+    
+    This is especially important if we're compiled as a subproject and the
+    consumer wants to use CMAKE_UNITY_BUILD=ON for the rest of their code
+    base.
+    
+    Closes: https://github.com/tukaani-project/xz/pull/158
+    (cherry picked from commit bf6da9a573a780cd1a7fb1728ef55d09e58dad11)
+
+ CMakeLists.txt | 6 ++++++
+ 1 file changed, 6 insertions(+)
+
+commit 8a7d922fb84ef6c60f1dfc9a127a0921e693412e
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2024-12-20 08:51:18 +0200
+
+    Windows: Workaround a UTF-8 issue in Gettext's libintl_setlocale()
+    
+    See the comment. In this package, locale is set at program startup and
+    not changed later, so the point (2) in the comment isn't a problem.
+    
+    Fixes: 46ee0061629fb075d61d83839e14dd193337af59
+    (cherry picked from commit b40e3321a7fb9dfdf8ffb30e7e0788c2f0abc941)
+
+ src/common/tuklib_gettext.h | 51 +++++++++++++++++++++++++++++++++++++++++++++
+ 1 file changed, 51 insertions(+)
+
+commit dcdd40cacc41ec7d8f290527a3000bce02c3a534
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2024-12-20 06:50:36 +0200
+
+    Revert "Windows: Use UTF-8 locale when active code page is UTF-8"
+    
+    This reverts commit 0d0b574cc45045d6150d397776340c068df59e2a.
+    
+    (cherry picked from commit bc4165da92b56668ddd1b7014b3488a0fad1733a)
+
+ src/common/tuklib_gettext.h | 32 ++------------------------------
+ 1 file changed, 2 insertions(+), 30 deletions(-)
+
+commit f8e42ed44d857de95e005cf306db7f40b0b4d628
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2024-12-19 18:31:09 +0200
+
+    xzdec: Use setlocale() instead of tuklib_gettext_setlocale()
+    
+    xzdec isn't translated and doesn't need libintl on Windows even
+    when NLS is enabled, thus libintl_setlocale() cannot interfere
+    with the locale settings. Thus, standard setlocale() works perfectly.
+    
+    In the commit 78868b6e, the explanation in the commit message is wrong.
+    
+    Fixes: 78868b6ed63fa4c89f73e3dfed27abfb8b0d46db
+    (cherry picked from commit d6796f9ce5359faaaed82926c1735aee3694430f)
+
+ src/xzdec/xzdec.c | 9 +++------
+ 1 file changed, 3 insertions(+), 6 deletions(-)
+
+commit 3ed40b9f87c2d855fccd9a4bb6bce7e980799abe
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2024-12-19 19:36:15 +0200
+
+    Windows: Revert the setlocale(LC_ALL, ".UTF8") documentation
+    
+    Only leave the FindFileFirstA() notes from 20dfca81, reverting
+    the incorrect setlocale() notes. On Windows, Gettext's <libintl.h>
+    overrides setlocale() with libintl_setlocale() wrapper. I hadn't
+    noticed this, and thus my conclusions were wrong.
+    
+    Fixes: 20dfca8171dad4c64785ac61d5b68972c444877b
+    (cherry picked from commit e607329a615759f1519016595dd38df7c89208f2)
+
+ src/common/w32_application.manifest.comments.txt | 21 +--------------------
+ 1 file changed, 1 insertion(+), 20 deletions(-)
+
+commit 4e0ebbabe45b8a988a5e8aa524e2a69220b8320b
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2024-12-16 20:06:07 +0200
+
+    tuklib_mbstr_width: Change the behavior when wcwidth() is not available
+    
+    If wcwidth() isn't available (Windows), previously it was assumed
+    that one byte == one column in the terminal. Now it is assumed that
+    one multibyte character == one column. This works better with UTF-8.
+    Languages that only use single-width characters without any combining
+    characters should work correctly with this.
+    
+    In xz, none of po/*.po contain combining characters and only ko.po,
+    zh_CN.po, and zh_TW.po contain fullwidth characters. Thus, "only"
+    those three translations in xz are broken on Windows with the
+    UTF-8 code page. Broken means that column headings in xz -lvv and
+    (only in the master branch) strings in --long-help are misaligned,
+    so it's not a huge problem. I don't know if those three languages
+    displayed perfectly before the UTF-8 change because I hadn't tested
+    translations with native Windows builds before.
+    
+    Fixes: 46ee0061629fb075d61d83839e14dd193337af59
+    (cherry picked from commit b797c44c42ea54fe1c52722a2fca0c9618575598)
+
+ src/common/tuklib_mbstr_width.c | 13 +++++++++++--
+ 1 file changed, 11 insertions(+), 2 deletions(-)
+
+commit 4ff609adb00ab3264b91cc9c2f7c44a360348795
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2024-12-18 14:23:13 +0200
+
+    xzdec: Use setlocale() via tuklib_gettext_setlocale()
+    
+    xzdec isn't translated and didn't have locale-specific behavior
+    in the past. On Windows with UTF-8 in the application manifest,
+    setting the locale makes a difference though:
+    
+      - Without any setlocale() call, non-ASCII filenames don't display
+        properly in Command Prompt unless one first uses "chcp 65001"
+        to set the console code page to UTF-8.
+    
+      - setlocale(LC_ALL, "") is enough to make non-ASCII filenames
+        print correctly in Command Prompt without using "chcp 65001",
+        assuming that the non-UTF-8 code page (like 850) supports
+        those non-ASCII characters.
+    
+      - setlocale(LC_ALL, ".UTF8") is even better because then mbrtowc() and
+        such functions use an UTF-8 locale instead of a legacy code page.
+        The tuklib_gettext_setlocale() macro takes care of this (without
+        enabling any translations).
+    
+    Fixes: 46ee0061629fb075d61d83839e14dd193337af59
+    (cherry picked from commit 78868b6ed63fa4c89f73e3dfed27abfb8b0d46db)
+
+ src/xzdec/xzdec.c | 12 ++++++++++++
+ 1 file changed, 12 insertions(+)
+
+commit 4e7a48bf15138034f68ac1c73eb133dc04d7c8ad
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2024-12-17 14:59:37 +0200
+
+    Windows: Use UTF-8 locale when active code page is UTF-8
+    
+    XZ Utils 5.6.3 set the active code page to UTF-8 to fix CVE-2024-47611.
+    This wasn't paired with UCRT-specific setlocale(LC_ALL, ".UTF8"), thus
+    non-ASCII characters from translations became mojibake.
+    
+    Fixes: 46ee0061629fb075d61d83839e14dd193337af59
+    (cherry picked from commit 0d0b574cc45045d6150d397776340c068df59e2a)
+
+ src/common/tuklib_gettext.h | 32 ++++++++++++++++++++++++++++++--
+ 1 file changed, 30 insertions(+), 2 deletions(-)
+
+commit d20e4115e1628bf4a43f6ab2d050a3a195b4ceb4
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2024-12-17 15:01:29 +0200
+
+    Windows: Document the need for setlocale(LC_ALL, ".UTF8")
+    
+    Also warn about unpaired surrogates and (somewhat UTF-8-specific)
+    MAX_PATH issue in FindFirstFileA().
+    
+    Fixes: 46ee0061629fb075d61d83839e14dd193337af59
+    (cherry picked from commit 20dfca8171dad4c64785ac61d5b68972c444877b)
+
+ src/common/w32_application.manifest.comments.txt | 28 +++++++++++++++++++++++-
+ 1 file changed, 27 insertions(+), 1 deletion(-)
+
+commit f9f0cdae8a071fb5ac68997f40b5b2a99e72ec17
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2024-12-18 14:12:22 +0200
+
+    xzdec: Call tuklib_progname_init() early enough
+    
+    If the early pledge() call on OpenBSD fails, it calls my_errorf()
+    which requires the "progname" variable.
+    
+    Fixes: d74fb5f060b76db709b50f5fd37490394e52f975
+    (cherry picked from commit 4e936f234056e5831013ed922145b666b04bb1e3)
+
+ src/xzdec/xzdec.c | 6 +++---
+ 1 file changed, 3 insertions(+), 3 deletions(-)
+
+commit 3e0bc4e91fb4f50541884256d764b92e2b65fbe8
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2024-12-15 19:08:32 +0200
+
+    CMake: Bump maximum policy version to 3.31
+    
+    With CMake 3.31, there were a few warnings from
+    CMP0177 "install() DESTINATION paths are normalized".
+    These occurred because the install(FILES) command in
+    my_install_man_lang() is called with a DESTINATION path
+    that contains two consecutive slashes, for example,
+    "share/man//man1". Such a path is for the English man pages.
+    With translated man pages, the language code goes between
+    the slashes. The warning was probably triggered because the
+    extra slash gets removed by the normalization.
+    
+    (cherry picked from commit 61feaf681bd793dc5c919732b44bca7dcf2ed1b8)
+
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 55127b25f268581324c61d3c51cd7bbb03851f02
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2024-12-15 18:35:27 +0200
+
+    Update THANKS
+    
+    (cherry picked from commit b0bb84dd7bbdcc85243386a0051c7b2cb5fc6a18)
+
+ THANKS | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit d86fa15b72233bc192be3a35fe9987398e4600e7
+Author: Dexter Castor Döpping <dexter.c.dopping@gmail.com>
+Date:   2024-12-08 18:24:29 +0100
+
+    liblzma: Fix incorrect macro name in a comment
+    
+    Fixes: 33b8a24b6646a9dbfd8358405aec466b13078559
+    Closes: https://github.com/tukaani-project/xz/pull/155
+    (cherry picked from commit bee0c044d30a6ad3b3d94901c27e7519f6f46e27)
+
+ src/liblzma/api/lzma/lzma12.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+commit 86e8b03d203a6d13870c56fdabe184ce5bc57837
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2024-11-30 10:27:14 +0200
+
+    Translations: Update the Chinese (traditional) translation
+    
+    (cherry picked from commit b36177273602ebc83e9cc58517f63a7b6af33f70)
+
+ po/zh_TW.po | 201 +++++++++++++++++++++++++-----------------------------------
+ 1 file changed, 84 insertions(+), 117 deletions(-)
+
+commit 9c5bab8bd1f660fbb9e7112dfdf4d7f9ef5700d4
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2024-11-25 16:26:54 +0200
+
+    Update THANKS
+    
+    (cherry picked from commit 9f69e71e78621fd056f5eaaad7cdcd9279310fb5)
+
+ THANKS | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit d9c2e7572bdba5fce4bfd8893d7d2ba376c5739d
+Author: Mark Wielaard <mark@klomp.org>
+Date:   2024-11-25 12:28:44 +0200
+
+    xz: Landlock: Fix a file descriptor leak
+    
+    (cherry picked from commit 48ff3f06521ca326996ab9a04d1b342098960427)
+
+ src/xz/sandbox.c | 1 +
+ 1 file changed, 1 insertion(+)
+
+commit 77cab41f32f1ed5dcc9dccd7492b219a2de939d3
+Author: Sam James <sam@gentoo.org>
+Date:   2024-10-02 03:04:03 +0100
+
+    CI: update FreeBSD, NetBSD, OpenBSD, Solaris actions
+    
+    Checked the changes and they're all innocuous. This should hopefully
+    fix the "externally managed" pip error in these jobs that started
+    recently.
+    
+    (cherry picked from commit dbca3d078ec581600600abebbb18769d3d713914)
+
+ .github/workflows/freebsd.yml | 2 +-
+ .github/workflows/netbsd.yml  | 2 +-
+ .github/workflows/openbsd.yml | 2 +-
+ .github/workflows/solaris.yml | 2 +-
+ 4 files changed, 4 insertions(+), 4 deletions(-)
+
+commit 6084b25c29ce50a5ec86daa1bb0bcb5e9afb5c32
+Author: Lasse Collin <lasse.collin@tukaani.org>
+Date:   2024-10-01 14:49:41 +0300
+
+    cmake/tuklib_large_file_support.cmake: Add a missing include
+    
+    v5.2 didn't build with CMake. Other branches had
+    include(CMakePushCheckState) in top-level CMakeLists.txt
+    which made the build work.
+    
+    Fixes: 597f49b61475438a43a417236989b2acc968a686
+    (cherry picked from commit be4bf94446b6286a5dffdde85fc1d21448f4edff)
+
+ cmake/tuklib_large_file_support.cmake | 1 +
+ 1 file changed, 1 insertion(+)
+
 commit 9331ce4009ddc839f5191d234cc41b2d4797376d
 Author: Lasse Collin <lasse.collin@tukaani.org>
 Date:   2024-10-01 12:21:22 +0300

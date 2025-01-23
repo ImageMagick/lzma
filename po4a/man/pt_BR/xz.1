@@ -13,7 +13,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH XZ 1 2024\-04\-08 Tukaani "XZ Utils"
+.TH XZ 1 2024\-12\-30 Tukaani "XZ Utils"
 .
 .SH NOME
 xz, unxz, xzcat, lzma, unlzma, lzcat \- Compacta ou descompacta arquivos .xz
@@ -184,9 +184,19 @@ Se várias opções de modo de operação forem dadas, a última entrará em vig
 Compacta. Este é o modo de operação padrão quando nenhuma opção de modo de
 operação é especificada e nenhum outro modo de operação está implícito no
 nome do comando (por exemplo, \fBunxz\fP implica em \fB\-\-decompress\fP).
+.IP ""
+.\" The DESCRIPTION section already says this but it's good to repeat it
+.\" here because the default behavior is a bit dangerous and new users
+.\" in a hurry may skip reading the DESCRIPTION section.
+After successful compression, the source file is removed unless writing to
+standard output or \fB\-\-keep\fP was specified.
 .TP 
 \fB\-d\fP, \fB\-\-decompress\fP, \fB\-\-uncompress\fP
-Descompacta.
+.\" The DESCRIPTION section already says this but it's good to repeat it
+.\" here because the default behavior is a bit dangerous and new users
+.\" in a hurry may skip reading the DESCRIPTION section.
+Decompress.  After successful decompression, the source file is removed
+unless writing to standard output or \fB\-\-keep\fP was specified.
 .TP 
 \fB\-t\fP, \fB\-\-test\fP
 Testa a integridade de \fIarquivos\fP compactados. Esta opção é equivalente a
