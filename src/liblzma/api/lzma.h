@@ -188,7 +188,7 @@
  * omitted on Cygwin but not on MinGW-w64.
  */
 #ifndef LZMA_API_IMPORT
-#	if !defined(LZMA_API_STATIC) && defined(_WIN32) && !defined(__GNUC__)
+#	if !defined(_LIB) && defined(_WIN32) && !defined(__GNUC__)
 #		define LZMA_API_IMPORT __declspec(dllimport)
 #	else
 #		define LZMA_API_IMPORT
