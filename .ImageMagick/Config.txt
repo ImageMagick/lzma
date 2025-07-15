@@ -1,4 +1,4 @@
-[DLL]
+[DYNAMIC_LIBRARY]
 
 [LICENSE]
 COPYING.LGPLv2.1
@@ -6,20 +6,8 @@ COPYING.LGPLv2.1
 [DEFINES]
 HAVE_CONFIG_H
 
-[DEFINES_DLL]
+[DYNAMIC_DEFINES]
 DLL_EXPORT
-
-[DIRECTORIES]
-src\common
-src\liblzma\api
-src\liblzma\check
-src\liblzma\common
-src\liblzma\delta
-src\liblzma\lz
-src\liblzma\lzma
-src\liblzma\rangecoder
-src\liblzma\simple
-windows
 
 [INCLUDES]
 src\common
@@ -33,16 +21,28 @@ src\liblzma\rangecoder
 src\liblzma\simple
 windows
 
-[EXCLUDES]
-crc32_small.c
-crc32_tablegen.c
-crc64_small.c
-crc64_tablegen.c
-common_w32res.rc
-fastpos_tablegen.c
-price_tablegen.c
+[INCLUDE_ARTIFACTS]
+src\liblzma\api\lzma -> lzma
+src\liblzma\api\lzma.h -> .
 
-[CONFIG_DEFINE]
+[EXCLUDES]
+debug\
+doc\
+extra\
+lib\
+src\liblzma\check\crc_clmul_consts_gen.c
+src\liblzma\check\crc32_small.c
+src\liblzma\check\crc32_tablegen.c
+src\liblzma\check\crc64_small.c
+src\liblzma\check\crc64_tablegen.c
+src\liblzma\lzma\fastpos_tablegen.c
+src\liblzma\rangecoder\price_tablegen.c
+src\lzmainfo\
+src\xz\
+src\xzdec\
+tests\
+
+[MAGICK_BASECONFIG_DEFINE]
 /*
   Define to use the lzma compression library
 */
