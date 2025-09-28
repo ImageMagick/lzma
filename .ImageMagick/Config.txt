@@ -1,5 +1,23 @@
 [DYNAMIC_LIBRARY]
 
+[VERSION]
+5.8.1
+
+[RELEASE_DATE]
+2025-04-03
+
+[PRODUCT_NAME]
+liblzma
+
+[COMPANY_NAME]
+The Tukaani Project
+
+[URL]
+https://tukaani.org/xz
+
+[COPYRIGHT]
+Copyright (c) 2016 Lasse Collin
+
 [LICENSE_FILE]
 COPYING.LGPLv2.1
 
