@@ -353,18 +353,13 @@ retrocompatibilità con le LZMA Utils.
 Accetta solo file \fB.lz\fP per la decompressione. La compressione non è
 supportata.
 .IP ""
-Sono supportati il formato \fB.lz\fP versione 0 e la versione 1 non estesa. I
-file della versione 0 sono stati prodotti da \fBlzip\fP 1.3 e precedenti. Tali
-file non sono comuni, ma possono essere trovati negli archivi di file poiché
-alcuni pacchetti sorgente sono stati rilasciati in questo formato. Anche
-alcune persone potrebbero avere vecchi file personali in questo formato. Il
-supporto alla decompressione per il formato versione 0 è stato rimosso in
-\fBlzip\fP 1.18.
-.IP ""
-\fBlzip\fP 1.4 e successivi creano file nel formato v1. L'estensione del
-marcatore di scaricamento sincronizzazione al formato v1 è stata aggiunta in
-\fBlzip\fP 1.6. Questa estensione è utilizzata raramente e non è supportata da
-\fBxz\fP(viene segnalata come input corrotto).
+Sono supportate le versioni 0 e 1 del formato \fB.lz\fP. I file in versione 0
+sono stati prodotti da \fBlzip\fP 1.3 e precedenti. Questi file non sono
+comuni, ma possono essere trovati negli archivi di file, perché alcuni
+pacchetti sorgente erano stati rilasciati in questo formato. Qualcuno
+potrebbe anche avere vecchi file personali in questo formato. Il supporto
+alla decompressione per la versione di formato 0 è stato rimosso in \fBlzip\fP
+1.18. \fBlzip\fP 1.4 e successivi creano i file nella versione di formato 1.
 .TP 
 \fBraw\fP
 Comprime o decomprime un flusso grezzo (senza intestazione). Questo è inteso

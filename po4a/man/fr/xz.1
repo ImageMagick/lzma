@@ -344,17 +344,12 @@ fourni pour la rétrocompatibilité avec les utilitaires LZMA.
 \fBlzip\fP
 Accept only \fB.lz\fP files when decompressing.  Compression is not supported.
 .IP ""
-The \fB.lz\fP format version 0 and the unextended version 1 are supported.
-Version 0 files were produced by \fBlzip\fP 1.3 and older.  Such files aren't
-common but may be found from file archives as a few source packages were
-released in this format.  People might have old personal files in this
-format too.  Decompression support for the format version 0 was removed in
-\fBlzip\fP 1.18.
-.IP ""
-\fBlzip\fP 1.4 and later create files in the format version 1.  The sync flush
-marker extension to the format version 1 was added in \fBlzip\fP 1.6.  This
-extension is rarely used and isn't supported by \fBxz\fP (diagnosed as corrupt
-input).
+The \fB.lz\fP format versions 0 and 1 are supported.  Version 0 files were
+produced by \fBlzip\fP 1.3 and older.  Such files aren't common but may be
+found from file archives as a few source packages were released in this
+format.  People might have old personal files in this format too.
+Decompression support for the format version 0 was removed in \fBlzip\fP 1.18.
+\fBlzip\fP 1.4 and later create files in the format version 1.
 .TP 
 \fBraw\fP
 Compresser ou décompresser un flux brut (sans en\-têtes). Cela est réservé

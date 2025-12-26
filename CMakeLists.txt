@@ -77,7 +77,7 @@
 #
 #############################################################################
 
-cmake_minimum_required(VERSION 3.20...3.31 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.20...4.2 FATAL_ERROR)
 
 include(CMakePushCheckState)
 include(CheckIncludeFile)
@@ -85,6 +85,7 @@ include(CheckSymbolExists)
 include(CheckStructHasMember)
 include(CheckCSourceCompiles)
 include(CheckCCompilerFlag)
+include(CheckLinkerFlag)
 include(cmake/tuklib_large_file_support.cmake)
 include(cmake/tuklib_integer.cmake)
 include(cmake/tuklib_cpucores.cmake)
@@ -448,6 +449,7 @@ if(CMAKE_C_COMPILER_ID MATCHES GNU|Clang)
                 -Wdocumentation
                 -Wduplicate-enum
                 -Wempty-translation-unit
+                -Wextra-semi-stmt
                 -Wflexible-array-extensions
                 -Wmissing-variable-declarations
                 -Wnewline-eof
@@ -484,7 +486,7 @@ if(NOT WIN32)
     # auto      Autodetect between no, generic, and linux
     # yes       Force on by autodetecting between linux and generic
     # no        Disable symbol versioning
-    # generic   FreeBSD, most Linux/glibc systems, and GNU/Hurd
+    # generic   FreeBSD, some Linux/glibc systems, and GNU/Hurd
     # linux     Linux/glibc with extra symbol versions for compatibility
     #           with binaries that have been linked against a liblzma version
     #           that has been patched with "xz-5.2.2-compat-libs.patch" from
@@ -541,7 +543,7 @@ symbol versioning (${SUPPORTED_SYMBOL_VERSIONING_VARIANTS})")
             # somewhere in the string).
             #
             # NVIDIA HPC Compiler doesn't support symbol versioning but
-            # it uses the linked from the system so the linker script
+            # it uses the linker from the system so the linker script
             # can still be used to get the generic symbol versioning.
             set(SYMBOL_VERSIONING "generic")
 
@@ -555,6 +557,21 @@ symbol versioning (${SUPPORTED_SYMBOL_VERSIONING_VARIANTS})")
                XZ_SYMBOL_VERSIONING STREQUAL "yes")
             set(SYMBOL_VERSIONING "generic")
         endif()
+    endif()
+
+    if(NOT SYMBOL_VERSIONING STREQUAL "no")
+        # If features are disabled in liblzma, some symbols may be missing.
+        # LLVM's lld defaults to --no-undefined-version and the build breaks
+        # if not all symbols in the version script exist. That is good for
+        # catching errors like typos, but in our case the downside is too big.
+        # Avoid the problem by using --undefined-version if the linker
+        # supports it.
+        #
+        # GNU ld has had --no-undefined-version for a long time but it's not
+        # the default. The opposite option --undefined-version was only added
+        # in 2022, thus we must use --undefined-version conditionally.
+        check_linker_flag(C "-Wl,--undefined-version"
+                          HAVE_LINKER_FLAG_UNDEFINED_VERSION)
     endif()
 endif()
 
@@ -1363,6 +1380,13 @@ if(XZ_ARM64_CRC32)
         check_symbol_exists(getauxval sys/auxv.h HAVE_GETAUXVAL)
         tuklib_add_definition_if(liblzma HAVE_GETAUXVAL)
 
+        # With getauxval() we also need HWCAP_CRC32 which was
+        # added in glibc 2.24.
+        if(HAVE_GETAUXVAL)
+            check_symbol_exists(HWCAP_CRC32 sys/auxv.h HAVE_HWCAP_CRC32)
+            tuklib_add_definition_if(liblzma HAVE_HWCAP_CRC32)
+        endif()
+
         # elf_aux_info() is supported on FreeBSD and OpenBSD >= 7.6.
         check_symbol_exists(elf_aux_info sys/auxv.h HAVE_ELF_AUX_INFO)
         tuklib_add_definition_if(liblzma HAVE_ELF_AUX_INFO)
@@ -1480,6 +1504,9 @@ elseif(BUILD_SHARED_LIBS AND SYMBOL_VERSIONING STREQUAL "linux")
     # NOTE: Set it explicitly to 1 to make it clear that versioning is
     # done unconditionally in the C files.
     target_compile_definitions(liblzma PRIVATE HAVE_SYMBOL_VERSIONS_LINUX=1)
+    if(HAVE_LINKER_FLAG_UNDEFINED_VERSION)
+        target_link_options(liblzma PRIVATE "-Wl,--undefined-version")
+    endif()
     target_link_options(liblzma PRIVATE
         "-Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/src/liblzma/liblzma_linux.map"
     )
@@ -1487,6 +1514,9 @@ elseif(BUILD_SHARED_LIBS AND SYMBOL_VERSIONING STREQUAL "linux")
         LINK_DEPENDS "${CMAKE_CURRENT_SOURCE_DIR}/src/liblzma/liblzma_linux.map"
     )
 elseif(BUILD_SHARED_LIBS AND SYMBOL_VERSIONING STREQUAL "generic")
+    if(HAVE_LINKER_FLAG_UNDEFINED_VERSION)
+        target_link_options(liblzma PRIVATE "-Wl,--undefined-version")
+    endif()
     target_link_options(liblzma PRIVATE
         "-Wl,--version-script=${CMAKE_CURRENT_SOURCE_DIR}/src/liblzma/liblzma_generic.map"
     )
@@ -2171,8 +2201,13 @@ this many MiB of RAM if xz cannot determine the amount at runtime")
     tuklib_progname(xz)
     tuklib_mbstr(xz)
 
-    check_symbol_exists(optreset getopt.h HAVE_OPTRESET)
-    tuklib_add_definition_if(xz HAVE_OPTRESET)
+    if(HAVE_GETOPT_LONG)
+        check_symbol_exists(optreset getopt.h HAVE_OPTRESET)
+        tuklib_add_definition_if(xz HAVE_OPTRESET)
+    endif()
+
+    check_symbol_exists(getrlimit sys/resource.h HAVE_GETRLIMIT)
+    tuklib_add_definition_if(xz HAVE_GETRLIMIT)
 
     check_symbol_exists(posix_fadvise fcntl.h HAVE_POSIX_FADVISE)
     tuklib_add_definition_if(xz HAVE_POSIX_FADVISE)

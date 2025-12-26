@@ -758,6 +758,7 @@ fi
 # --with-pic and --without-pic though. As long as neither --with-pic nor
 # --without-pic is used then we can use #ifdef PIC to detect if the file is
 # being built for a shared library.
+LINKER_FLAG_UNDEFINED_VERSION=
 AS_IF([test "x$enable_symbol_versions" = xno], [
 	enable_symbol_versions=no
 	AC_MSG_RESULT([no])
@@ -831,12 +832,34 @@ AS_IF([test "x$enable_symbol_versions" = xno], [
 		AC_MSG_ERROR([unknown symbol versioning variant '$enable_symbol_versions'])
 	fi
 	AC_MSG_RESULT([yes ($enable_symbol_versions)])
+
+	# If features are disabled in liblzma, some symbols may be missing.
+	# LLVM's lld defaults to --no-undefined-version and the build breaks
+	# if not all symbols in the version script exist. That is good for
+	# catching errors like typos, but in our case the downside is too big.
+	# Avoid the problem by using --undefined-version if the linker
+	# supports it.
+	#
+	# GNU ld has had --no-undefined-version for a long time but it's not
+	# the default. The opposite option --undefined-version was only added
+	# in 2022, thus we must use --undefined-version conditionally.
+	AC_MSG_CHECKING([if linker supports --undefined-version])
+	OLD_LDFLAGS=$LDFLAGS
+	LDFLAGS="$LDFLAGS -Wl,--undefined-version"
+	AC_LINK_IFELSE([AC_LANG_SOURCE([[int main(void) { return 0; }]])], [
+		LINKER_FLAG_UNDEFINED_VERSION=-Wl,--undefined-version
+		AC_MSG_RESULT([yes])
+	], [
+		AC_MSG_RESULT([no])
+	])
+	LDFLAGS=$OLD_LDFLAGS
 ])
 
 AM_CONDITIONAL([COND_SYMVERS_LINUX],
 	[test "x$enable_symbol_versions" = xlinux])
 AM_CONDITIONAL([COND_SYMVERS_GENERIC],
 	[test "x$enable_symbol_versions" = xgeneric])
+AC_SUBST([LINKER_FLAG_UNDEFINED_VERSION])
 
 
 ###############################################################################
@@ -985,8 +1008,8 @@ AC_CHECK_DECL([CLOCK_MONOTONIC], [AC_DEFINE([HAVE_CLOCK_MONOTONIC], [1],
 # Find the best function to set timestamps.
 AC_CHECK_FUNCS([futimens futimes futimesat utimes _futime utime], [break])
 
-# This is nice to have but not mandatory.
-AC_CHECK_FUNCS([posix_fadvise])
+# These are nice to have but not mandatory.
+AC_CHECK_FUNCS([getrlimit posix_fadvise])
 
 TUKLIB_PROGNAME
 TUKLIB_INTEGER
@@ -1145,7 +1168,8 @@ int main(void)
 
 # Check for ARM64 CRC32 instruction runtime detection.
 #
-#   - getauxval() is supported on Linux.
+#   - getauxval() is supported on Linux. We also need HWCAP_CRC32 which was
+#     added in glibc 2.24.
 #
 #   - elf_aux_info() is supported on FreeBSD and OpenBSD >= 7.6.
 #
@@ -1157,6 +1181,9 @@ int main(void)
 #
 AS_IF([test "x$enable_arm64_crc32" = xyes], [
 	AC_CHECK_FUNCS([getauxval elf_aux_info sysctlbyname], [break])
+	AC_CHECK_DECL([HWCAP_CRC32], [AC_DEFINE([HAVE_HWCAP_CRC32], [1],
+		[Define to 1 if 'HWCAP_CRC32' is declared in <sys/auxv.h>.])],
+		[], [[#include <sys/auxv.h>]])
 ])
 
 
@@ -1333,6 +1360,7 @@ AS_IF([test "$GCC" = yes], [
 			-Wdocumentation \
 			-Wduplicate-enum \
 			-Wempty-translation-unit \
+			-Wextra-semi-stmt \
 			-Wflexible-array-extensions \
 			-Wmissing-variable-declarations \
 			-Wnewline-eof \

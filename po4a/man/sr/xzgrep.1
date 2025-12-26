@@ -13,7 +13,7 @@
 .\" This file was generated with po4a. Translate the source file.
 .\"
 .\"*******************************************************************
-.TH XZGREP 1 2025\-03\-06 Tukaani "XZ Utils"
+.TH XZGREP 1 06.03.2025. Tukaani "XZ Utils"
 .SH НАЗИВ
 xzgrep – претражује могуће запаковане датотеке за шаблонима
 .
@@ -24,18 +24,18 @@ xzgrep – претражује могуће запаковане датотек
 .br
 \fBxzfgrep\fP \&...
 .br
-\fBlzgrep\fP \&...  (DEPRECATED)
+\fBlzgrep\fP \&...  (ЗАСТАРЕЛО)
 .br
-\fBlzegrep\fP \&...  (DEPRECATED)
+\fBlzegrep\fP \&...  (ЗАСТАРЕЛО)
 .br
-\fBlzfgrep\fP \&...  (DEPRECATED)
+\fBlzfgrep\fP \&...  (ЗАСТАРЕЛО)
 .
 .SH ОПИС
 \fBxzgrep\fP призива \fBgrep\fP(1) на незапакованим садржајима датотека.  Формати
 \fIдатотека\fP се одређују из суфикса назива датотека.  Било која \fIдатотека\fP
 са суфиксом подржаним од стране \fBxz\fP(1), \fBgzip\fP(1), \fBbzip2\fP(1),
 \fBlzop\fP(1), \fBzstd\fP(1) или \fBlz4\fP(1) биће распакована; све остале датотеке
-се подразумевају да нису запаковане
+се подразумевају да нису запаковане.
 .PP
 Ако \fIдатотеке\fP нису наведене или \fIдатотека\fP је \fB\-\fP тада се чита
 стандардни улаз.  Приликом читања са стандардног улаза, само датотеке
@@ -65,9 +65,8 @@ xzgrep – претражује могуће запаковане датотек
 .PP
 \fBxzegrep\fP је алијас за \fBxzgrep \-E\fP.  \fBxzfgrep\fP је алијас за \fBxzgrep \-F\fP.
 .PP
-The commands \fBlzgrep\fP, \fBlzegrep\fP, and \fBlzfgrep\fP are provided for backward
-compatibility with LZMA Utils.  They are deprecated and will be removed in a
-future version.
+Наредбе \fBlzgrep\fP, \fBlzegrep\fP и \fBlzfgrep\fP се достављају зарад назадне
+сагласности са LZMA Utils. Застареле су и биће уклоњене у будућем издању.
 .
 .SH "СТАЊЕ ИЗЛАЗА"
 .TP 

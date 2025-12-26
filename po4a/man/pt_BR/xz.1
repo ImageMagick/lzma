@@ -337,17 +337,12 @@ compatibilidade com versões anteriores do LZMA Utils.
 \fBlzip\fP
 Aceita apenas arquivos \fB.lz\fP ao descompactar. Sem suporte a compactação.
 .IP ""
-O formato \fB.lz\fP versão 0 e a versão não estendida 1 são suportados. Os
-arquivos da versão 0 foram produzidos por \fBlzip\fP 1.3 e anteriores. Esses
-arquivos não são comuns, mas podem ser encontrados em arquivos compactados,
-pois alguns pacotes de origem foram lançados nesse formato. As pessoas
-também podem ter arquivos pessoais antigos neste formato. O suporte de
-descompactação para o formato versão 0 foi removido em \fBlzip\fP 1.18.
-.IP ""
-\fBlzip\fP 1.4 e posteriores criam arquivos no formato versão 1. A extensão do
-marcador de descarga de sincronização para o formato versão 1 foi adicionada
-em \fBlzip\fP 1.6. Esta extensão raramente é usada e não é suportada por \fBxz\fP
-(diagnosticada como entrada corrompida).
+The \fB.lz\fP format versions 0 and 1 are supported.  Version 0 files were
+produced by \fBlzip\fP 1.3 and older.  Such files aren't common but may be
+found from file archives as a few source packages were released in this
+format.  People might have old personal files in this format too.
+Decompression support for the format version 0 was removed in \fBlzip\fP 1.18.
+\fBlzip\fP 1.4 and later create files in the format version 1.
 .TP 
 \fBraw\fP
 Compacta ou descompacta um fluxo bruto (sem cabeçalhos). Isso é destinado

@@ -358,18 +358,12 @@ akzeptiert nur \fB.lzma\fP\-Dateien bei der Dekompression. Der alternative Name
 Akzeptiert nur \fB.lz\fP\-Dateien bei der Dekompression. Kompression wird nicht
 unterstützt.
 .IP ""
-Das \fB.lz\fP\-Format wird in Version 0 und der unerweiterten Version 1
-unterstützt. Dateien der Version 0 wurden von \fBlzip\fP 1.3 und älter
-erstellt. Solche Dateien sind nicht sehr weit verbreitet, können aber in
-Dateiarchiven gefunden werden, da einige Quellpakete in diesem Format
-veröffentlicht wurden. Es ist auch möglich, dass Benutzer alte persönliche
-Dateien in diesem Format haben. Die Dekompressionsunterstützung für das
-Format der Version 0 wurde mit der Version 1.18 aus \fBlzip\fP entfernt.
-.IP ""
-\fBlzip\fP\-Versionen ab 1.4 erstellen Dateien im Format der Version 0. Die
-Erweiterung »Sync Flush Marker« zur Formatversion 1 wurde in \fBlzip\fP 1.6
-hinzugefügt. Diese Erweiterung wird sehr selten verwendet und wird von \fBxz\fP
-nicht unterstützt (die Eingabe wird als beschädigt erkannt).
+The \fB.lz\fP format versions 0 and 1 are supported.  Version 0 files were
+produced by \fBlzip\fP 1.3 and older.  Such files aren't common but may be
+found from file archives as a few source packages were released in this
+format.  People might have old personal files in this format too.
+Decompression support for the format version 0 was removed in \fBlzip\fP 1.18.
+\fBlzip\fP 1.4 and later create files in the format version 1.
 .TP 
 \fBraw\fP
 Komprimiert oder dekomprimiert einen Rohdatenstrom (ohne Header). Diese
