@@ -1,7 +1,5 @@
 #define TUKLIB_SYMBOL_PREFIX lzma_
-#define HAVE_IMMINTRIN_H
 #define HAVE__MM_MOVEMASK_EPI8
-#define HAVE_USABLE_CLMUL
 #define HAVE_VISIBILITY 0
 #define PACKAGE_NAME "XZ Utils"
 #define PACKAGE_BUGREPORT "xz@tukaani.org"
@@ -46,3 +44,7 @@
 #define HAVE_DECODER_RISCV
 #define HAVE_DECODERS
 #define HAVE_LZIP_DECODER
+#if !defined(_M_ARM64)
+  #define HAVE_IMMINTRIN_H
+  #define HAVE_USABLE_CLMUL
+#endif
